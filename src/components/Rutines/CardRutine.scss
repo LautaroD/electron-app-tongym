@@ -1,0 +1,26 @@
+@import '../../scss/index.scss';
+
+.card-rutine {
+    width: 99%;
+    margin-top: 15px;
+    margin-left: 1px;
+
+    .ui.card {
+
+        .content {
+            >.header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .metaInfo {
+                    margin-left: 10px;
+                    opacity: 0.5;
+                    font-weight: 900;
+                    font-size: 11px;
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,35 @@
+@import '../../scss/index.scss';
+
+$footerHeight: 100px;
+$menuWidth: 300px;
+
+.logged-layout {
+    height: 100vh;
+    overflow: hidden;
+
+    &__content {
+        display: flex;
+        height: calc(100% - $footerHeight);
+    }
+
+    &__left-menu {
+        background-color: $background-dark;
+        width: $menuWidth;
+    }
+
+    &__children-content {
+        width: calc(100% - $menuWidth);
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__footer {
+        background-color: white;
+        bottom: 0px;
+        right: 5px;
+        position: absolute;
+        color: $font-primary;
+    }
+}

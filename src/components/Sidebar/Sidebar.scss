@@ -1,0 +1,48 @@
+@import '../../scss/index.scss';
+
+$menuWidth: 300px;
+
+.left-menu {
+    padding-top: 210px;
+    height: 100vh;
+    width: $menuWidth;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $background-primary;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+    .item {
+        border-radius: 0 !important;
+        border-left: 4px solid transparent;
+        font-size: 16px;
+
+        i {
+            color: $font-dark  !important;
+        }
+
+        &.active {
+            border-color: $primary-color;
+            color: $font-primary  !important;
+
+            i {
+                color: $font-primary  !important;
+            }
+        }
+    }
+
+    &__logo {
+        padding-top: 15px;
+        position: absolute;
+        top: 0;
+    }
+
+    &__appVersion {
+        position: absolute;
+        top: 0;
+        left: 5px;
+        opacity: 0.6;
+        font-size: 12px;
+    }
+}

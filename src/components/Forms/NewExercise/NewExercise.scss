@@ -1,0 +1,15 @@
+@import '../../../scss/index.scss';
+
+.ui.selection.dropdown {
+    margin-bottom: 15px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        border-color: $font-primary  !important;
+    }
+
+    >.label {
+        background-color: $font-grey;
+    }
+}

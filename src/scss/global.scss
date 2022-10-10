@@ -1,0 +1,17 @@
+@import './index.scss';
+@import './semantic/index.scss';
+
+*,
+a,
+p {
+    color: $font-dark;
+}
+
+.contador {
+    padding: 7px 15px;
+    border-radius: 7px;
+    background-color: $font-primary;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}

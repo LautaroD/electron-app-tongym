@@ -1,0 +1,56 @@
+@import '../../../scss/index.scss';
+
+.basicInfo-form {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 25px;
+
+    .descriptionForm {
+        padding-left: 7px;
+
+        .input {
+            height: 120px;
+        }
+    }
+
+    &__nameClient {
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .react-datepicker-wrapper {
+        width: 94%;
+    }
+
+    &__labelProgramStart {
+        margin-top: -15px;
+        font-weight: 700;
+        color: rgba(0, 0, 0, .87);
+        font-size: .92857143em;
+    }
+}
+
+.ui.form {
+
+    textarea {
+        color: $font-dark;
+
+        &:hover,
+        &:active,
+        &:focus {
+            border-color: $font-primary;
+        }
+    }
+}
+
+// .react-datepicker-wrapper {
+
+//     .react-datepicker__input-container {
+
+//         background-color: red !important;
+//     }
+// }

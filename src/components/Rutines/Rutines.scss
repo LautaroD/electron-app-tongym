@@ -1,0 +1,35 @@
+@import '../../scss/index.scss';
+
+.component-rutine {
+    padding: 15px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+
+        >h2 {
+            margin: 0;
+            padding: 0;
+            color: $font-primary;
+        }
+
+        >p {
+            padding-right: 15px;
+        }
+    }
+
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        height: 91vh;
+        overflow-y: scroll;
+    }
+
+    &__titleNoRutines {
+        color: $font-primary;
+        text-align: center;
+        position: relative;
+        top: 250px;
+    }
+}

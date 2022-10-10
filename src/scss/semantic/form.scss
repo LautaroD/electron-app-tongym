@@ -1,0 +1,61 @@
+.ui.form {
+    .field {
+
+        select {
+
+            // border-color: $font-light;
+
+            &:hover,
+            &:active,
+            &:focus {
+                border-color: $font-primary  !important;
+            }
+        }
+
+        .input {
+            input {
+
+                color: $font-dark;
+
+                &:hover,
+                &:active,
+                &:focus {
+                    border-color: $font-primary;
+                }
+            }
+
+            i {
+                color: $font-light;
+            }
+        }
+
+        .ui.button.primary {
+            background-color: $font-primary;
+            color: $font-light;
+        }
+
+    }
+
+    .field.error {
+        .ui.input {
+            input {
+                border: 1px solid $danger;
+                color: $danger;
+            }
+
+            i {
+                color: $danger;
+            }
+        }
+    }
+
+    >textarea {
+        color: $font-dark;
+
+        &:hover,
+        &:active,
+        &:focus {
+            border-color: $font-primary;
+        }
+    }
+}

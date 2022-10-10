@@ -1,0 +1,11 @@
+@import '../../scss/index.scss';
+
+.profile-client {
+    padding: 15px;
+
+    .ui.floated.header {
+        text-transform: capitalize;
+    }
+
+    &__header {}
+}
