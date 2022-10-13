@@ -1,4 +1,6 @@
 import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { Form, Button, Icon, Select } from 'semantic-ui-react';
 import '../NewRutine/BasicInfo.scss';
 import DatePicker, { registerLocale } from 'react-datepicker';
@@ -7,6 +9,28 @@ import es from 'date-fns/locale/es';
 registerLocale('es', es)
 
 export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionClients }) {
+
+    let valueDate = (dataRutine.startProgram === null) ? null : dataRutine.startProgram;
+
+    // function validationSchema() {
+    //     return Yup.object({
+    //         name: Yup.string().required(true),
+    //     })
+    // }
+
+    // const formik = useFormik({
+    //     initialValues: { name: '' },
+    //     validationSchema: validationSchema(),
+    //     validateOnChange: false,
+    //     onSubmit: async (formValue) => {
+    //         try {
+    //             setDataRutine({ ...dataRutine, name: formValue.name });
+    //             nextStep();
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    // })
 
     return (
         <>
@@ -20,6 +44,10 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                             placeholder='Nombre de la rutina...'
                             value={dataRutine.name}
                             onChange={(e) => setDataRutine({ ...dataRutine, name: e.target.value })}
+                            // onChange={(e) => {
+                            //     // setDataRutine({ ...dataRutine, name: e.target.value });
+                            //     formik.handleChange
+                            // }}
                             className='firstRep'
                             width={15}
                         />
@@ -46,9 +74,10 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                         />
                         <label className='basicInfo-form__labelProgramStart'>Inicio del programa:</label>
                         <DatePicker
-                            selected={dataRutine.startProgram}
+                            selected={valueDate}
                             onChange={date => {
                                 setDataRutine({ ...dataRutine, startProgram: date });
+                                valueDate = date;
                                 // formik.setFieldValue('startDate', date)
                             }}
                             placeholderText='Seleccione una fecha...'

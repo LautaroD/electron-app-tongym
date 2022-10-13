@@ -68,12 +68,12 @@ export default function SearchOfExercises() {
                             <option disabled value=''>Grupo muscular...</option>
                             <option value='Abdominales'>Abdominales</option>
                             <option value='Abductores'>Abductores</option>
-                            <option value='Pectoral'>Aductores</option>
+                            <option value='Aductores'>Aductores</option>
                             <option value='Antebrazo'>Antebrazo</option>
                             <option value='Bíceps'>Bíceps</option>
                             <option value='Cuádriceps'>Cuádriceps</option>
                             <option value='Dorsal'>Dorsal</option>
-                            <option value='Pectoral'>Espinales</option>
+                            <option value='Espinales'>Espinales</option>
                             <option value='Gemelos'>Gemelos</option>
                             <option value='Glúteos'>Glúteos</option>
                             <option value='Hombros'>Hombros</option>

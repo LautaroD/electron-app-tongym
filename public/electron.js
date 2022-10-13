@@ -29,7 +29,7 @@ function createWindow() {
 
     autoUpdater.checkForUpdatesAndNotify();
 
-    mainWindow.removeMenu();
+    // mainWindow.removeMenu();
     mainWindow.on("closed", () => (mainWindow = null));
 }
 

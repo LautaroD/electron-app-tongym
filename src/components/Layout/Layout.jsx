@@ -2,7 +2,8 @@ import React from 'react';
 import { Sidebar } from '../index';
 import './Layout.scss';
 import { Database } from '../../api';
-
+import { Dimmer, Loader } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
 const controllerDatabase = new Database();
 
 (async function validations() {
@@ -11,6 +12,8 @@ const controllerDatabase = new Database();
 })();
 
 export function Layout({ children }) {
+    const loading = useSelector((state) => state.loadingReducer.isLoading)
+
     return (
         <div className='logged-layout'>
             <div className='logged-layout__content'>
@@ -18,7 +21,13 @@ export function Layout({ children }) {
                     <Sidebar />
                 </div>
                 <div className='logged-layout__children-content'>
-                    <div>{children}</div>
+                    {
+                        (loading)
+                            ? <Dimmer active inverted>
+                                <Loader inverted >Cargando...</Loader>
+                            </Dimmer>
+                            : <div>{children}</div>
+                    }
                 </div>
             </div>
             <span className='logged-layout__footer'>

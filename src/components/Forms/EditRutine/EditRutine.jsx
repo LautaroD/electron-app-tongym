@@ -6,7 +6,7 @@ import SerieOne from './SerieOne';
 import SerieTwo from './SerieTwo';
 import SerieThree from './SerieThree';
 import BasicInfo from './BasicInfo';
-import { getAllExercises, getAllRutines, getAllClients } from '../../../redux/actions';
+import { getAllExercises, getAllRutines, getAllClients, setLoadingFalse, setLoadingTrue } from '../../../redux/actions';
 
 const rutinesController = new Rutines();
 const pdfController = new GeneratorPDF();
@@ -34,7 +34,7 @@ export function EditRutine({ onClose, openAlert }) {
             text: editRutine.dataRutine.assignedTo.text,
             key: editRutine.dataRutine.assignedTo.key
         },
-        startProgram: new Date(editRutine.dataRutine.startProgram)
+        startProgram: (editRutine.dataRutine.startProgram === null) ? null : new Date(editRutine.dataRutine.startProgram)
     })
 
     const [serieOne, setSerieOne] = useState({
@@ -129,10 +129,12 @@ export function EditRutine({ onClose, openAlert }) {
     }
 
     const handleSubmit = async () => {
-        await rutinesController.editRutine({ dataRutine, serieOne, serieTwo, serieThree })
+        await rutinesController.editRutine({ dataRutine, serieOne, serieTwo, serieThree });
+        dispatch(setLoadingTrue());
         setTimeout(() => {
             dispatch(getAllRutines());
-        }, 500);
+            dispatch(setLoadingFalse());
+        }, 1000);
         onClose();
     }
 

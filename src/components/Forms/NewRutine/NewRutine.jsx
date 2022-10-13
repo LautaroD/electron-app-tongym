@@ -128,6 +128,7 @@ export function NewRutine({ onClose, openAlert }) {
     }
 
     const handleSubmit = async () => {
+        console.log(dataRutine);
         await pdfController.savePDF({ dataRutine, firstSerie, secondSerie, thirdSerie });
         let result = await rutinesController.createRutine(dataRutine, firstSerie, secondSerie, thirdSerie);
         openAlert(result.type, result.message);

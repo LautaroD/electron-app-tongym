@@ -1,5 +1,7 @@
 import React from 'react';
 import { Form, Button, Icon, Select } from 'semantic-ui-react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import './BasicInfo.scss';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -7,6 +9,26 @@ import es from 'date-fns/locale/es';
 registerLocale('es', es)
 
 export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionClients }) {
+
+    function validationSchema() {
+        return Yup.object({
+            name: Yup.string().required(true),
+        })
+    }
+
+    const formik = useFormik({
+        initialValues: { name: '' },
+        validationSchema: validationSchema(),
+        validateOnChange: false,
+        onSubmit: async (formValue) => {
+            try {
+                setDataRutine({ ...dataRutine, name: formValue.name });
+                nextStep();
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    })
 
     return (
         <>
@@ -18,8 +40,11 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                             name='name'
                             type='text'
                             placeholder='Nombre de la rutina...'
-                            value={dataRutine.name}
-                            onChange={(e) => setDataRutine({ ...dataRutine, name: e.target.value })}
+                            // value={dataRutine.name}
+                            // onChange={(e) => setDataRutine({ ...dataRutine, name: e.target.value })}
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
+                            error={formik.errors.name}
                             className='firstRep'
                             width={15}
                         />
@@ -68,7 +93,7 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                     />
                 </div>
             </Form>
-            <Button onClick={nextStep} color='violet' icon labelPosition='right'>
+            <Button type='submit' onClick={formik.handleSubmit} color='violet' icon labelPosition='right'>
                 Siguiente
                 <Icon name='right arrow' />
             </Button>

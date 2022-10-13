@@ -37,13 +37,15 @@ export function EditClient({ onClose }) {
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                // console.log(formValue);
                 await clientController.updateClient(formValue);
-                dispatch(getAllClients());
+                dispatch(setLoadingTrue());
+                setTimeout(() => {
+                    dispatch(setLoadingFalse());
+                    dispatch(getAllClients());
+                }, 500);
                 onClose();
             } catch (error) {
                 console.log(error);
-                // openAlert('error', 'usuario no actualizado');
             }
         }
     })

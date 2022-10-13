@@ -3,7 +3,7 @@ import { Exercises } from '../../../api';
 import { Form, Dropdown } from 'semantic-ui-react';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllExercises } from '../../../redux/actions';
+import { getAllExercises, setLoadingFalse, setLoadingTrue } from '../../../redux/actions';
 import * as Yup from 'yup';
 
 const optionsCategory = [
@@ -47,6 +47,10 @@ export function EditExercise({ onClose, openAlert }) {
                 formValue = { ...formValue, value: formValue.text }
                 await exercisesController.updateExercise(formValue);
                 dispatch(getAllExercises());
+                dispatch(setLoadingTrue());
+                setTimeout(() => {
+                    dispatch(setLoadingFalse());
+                }, 1000);
                 onClose();
             } catch (error) {
                 openAlert('error', 'usuario no registrado');

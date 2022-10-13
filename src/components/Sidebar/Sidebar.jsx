@@ -5,6 +5,7 @@ import './Sidebar.scss';
 import { logoPrimary } from '../../assets';
 import { BasicModal, Alert } from '../../shared';
 import { NewRutine, NewClient, NewExercise } from '../Forms';
+const versionApp = require('../../../package.json');
 
 export function Sidebar() {
     const [showModal, setShowModal] = useState(false);
@@ -110,7 +111,7 @@ export function Sidebar() {
                     />
                 </Menu>
                 <span className='left-menu__appVersion'>
-                    v1.0.0
+                    v{versionApp.version}
                 </span>
             </div>
             <BasicModal

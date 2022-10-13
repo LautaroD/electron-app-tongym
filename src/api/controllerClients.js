@@ -47,7 +47,7 @@ export class Client {
             let clients = await fs2.readFileSync(this.infoClients);
             clients = JSON.parse(clients);
 
-            clients = clients.filter(client => (dataClient.name + dataClient.lastName) !== (client.name + client.lastName));
+            clients = clients.filter(client => (dataClient.key) !== (client.key));
             clients.push(dataClient)
             clients = JSON.stringify(clients);
 

@@ -1,4 +1,4 @@
-import { plantillaPDF } from '../assets';
+import { plantillaPDF, plantillaPDF2 } from '../assets';
 import moment from 'moment';
 import { Database } from './db';
 const { jsPDF } = require("jspdf"); // will automatically load the node version
@@ -370,8 +370,8 @@ export class GeneratorPDF {
             doc.addImage(plantillaPDF, 'JPEG', 0, 0, 300, 200);
 
             if (data.dataRutine.assignedTo.key !== 0) {
-                doc.setFontSize(17);
-                doc.text(String(data.dataRutine.assignedTo.text), 190, 19, null, 0)
+                doc.setFontSize(20);
+                doc.text(String(data.dataRutine.assignedTo.text), 190, 19, { renderingMode: 'invisible' }, 0)
             }
 
             if (data.dataRutine.startProgram !== null) {
@@ -511,6 +511,9 @@ export class GeneratorPDF {
             doc.text((String(data.serieThree[4].fourthRep) === '0') ? '' : String(data.serieThree[4].fourthRep), 96, 192, null, 0);
             doc.text((String(data.serieThree[4].fourthWeight) === '0') ? '' : String(data.serieThree[4].fourthWeight), 126, 192, null, 0);
             doc.text(data.serieThree[4].fourthType, 146, 192, null, 0);
+
+            doc.addPage('a4', 'landscape');
+            doc.addImage(plantillaPDF2, 'JPEG', 0, 0, 300, 200);
 
             return doc.output('blob');
 

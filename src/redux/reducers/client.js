@@ -23,7 +23,7 @@ export const clientsReducer = (state = initialStore, { type, payload }) => {
         case SEARCH_DISCIPLINA:
             return {
                 ...state,
-                clients: state.clientsCopy.filter(client => (client.disciplina).toLowerCase() === (payload).toLowerCase())
+                clients: state.clientsCopy.filter(e => (e.disciplina) === (payload))
             }
         case RESET_CLIENTS:
             return {
@@ -33,7 +33,7 @@ export const clientsReducer = (state = initialStore, { type, payload }) => {
         case EDIT_CLIENT:
             return {
                 ...state,
-                clientToEdit: state.clients.filter(client => client.name === payload.name)
+                clientToEdit: state.clients.filter(client => client.key === payload.key)
             }
         case GET_ONE_CLIENT:
             return {

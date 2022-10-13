@@ -1,0 +1,14 @@
+@import '../../scss/index.scss';
+
+.buttons-pdf-page {
+    display: flex;
+    justify-content: center;
+
+    .ui.button {
+        background-color: $font-primary;
+
+        &:hover {
+            background-color: #4a44af;
+        }
+    }
+}

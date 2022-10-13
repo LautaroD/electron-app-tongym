@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Table, Icon, Popup, Dimmer, Loader } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editClient } from '../../redux/actions';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function ListOfClients({ clients, openModal, clientsCopy }) {
-    // const location = useLocation();
 
     const dispatch = useDispatch();
     const isLoading = useSelector((state) => state.loadingReducer.isLoading)

@@ -15,7 +15,6 @@ export default function SearchOfClients() {
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                // console.log(formValue);
                 dispatch(searchClient(formValue))
             } catch (error) {
                 console.log(error);

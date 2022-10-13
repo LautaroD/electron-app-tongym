@@ -32,12 +32,14 @@ export default function CardRutine({ name, description, rutina, openModal }) {
         openModal('editRutine');
     }
 
+    let nameRutine = name.charAt().toUpperCase() + name.substring(1);
+
     return (
         <div className='card-rutine'>
             <Card fluid>
                 <Card.Content>
                     <Card.Header>
-                        {name}
+                        {nameRutine}
                         <div>
                             <span className='metaInfo'>Asignado a: {(rutina.dataRutine.assignedTo.key === 0) ? 'Nadie' : rutina.dataRutine.assignedTo.text}</span>
                             {
