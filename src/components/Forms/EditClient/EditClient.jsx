@@ -28,7 +28,8 @@ export function EditClient({ onClose }) {
             startedDate: clientInfo[0].startedDate,
             startDate: parseISO(clientInfo[0].startDate),
             key: clientInfo[0].key,
-            rutinas: clientInfo[0].rutinas
+            rutinas: clientInfo[0].rutinas,
+            disciplina: clientInfo[0].disciplina
         },
         validationSchema: Yup.object({
             name: Yup.string().required(true),
@@ -124,6 +125,24 @@ export function EditClient({ onClose }) {
                         error={formik.errors.email}
                     />
                 </div>
+            </div>
+            <div className='newClient__disciplinaSelect'>
+                <Form.Field
+                    control='select'
+                    name='disciplina'
+                    placeholder='Disciplina...'
+                    value={formik.values.disciplina}
+                    onChange={formik.handleChange}
+                    error={formik.errors.disciplina}
+                >
+                    <option disabled value=''>Disciplina...</option>
+                    <option value='Musculacion'>Musculación</option>
+                    <option value='Strong'>Strong</option>
+                    <option value='Zumba'>Zumba</option>
+                    <option value='Aerolocalizada'>Aerolocalizada</option>
+                    <option value='Natacion'>Natación</option>
+                    <option value='Funcional'>Funcional</option>
+                </Form.Field>
             </div>
             <label>Fecha de inicio</label>
             <DatePicker

@@ -51,11 +51,11 @@ export default function SearchOfClients() {
                             error={formik.errors.disciplina}
                         >
                             <option disabled value=''>Disciplina...</option>
-                            <option value='aerolocalizada'>Aerolocalizada</option>
-                            <option value='funcional'>Funcional</option>
-                            <option value='musculacion'>Musculación</option>
-                            <option value='strong'>Strong</option>
-                            <option value='zumba'>Zumba</option>
+                            <option value='Aerolocalizada'>Aerolocalizada</option>
+                            <option value='Funcional'>Funcional</option>
+                            <option value='Musculacion'>Musculación</option>
+                            <option value='Strong'>Strong</option>
+                            <option value='Zumba'>Zumba</option>
                         </Form.Field>
                     </Form.Group>
                 </Form>
