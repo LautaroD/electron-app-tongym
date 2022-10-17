@@ -105,10 +105,10 @@ export class Client {
             clientsAll = JSON.parse(clientsAll);
 
             //Buscamos el cliente al que se le editó la rutina
-            let cliente = clientsAll.filter(item => item.key === rutine.dataRutine.assignedTo.key);
+            let cliente = clientsAll.filter(item => item.key === rutine.assignedTo.key);
 
             //Buscamos entre las rutinas del cliente la que queremos editar
-            let newRutinesClient = cliente[0].rutinas.filter(item => item.dataRutine.key !== rutine.dataRutine.key);
+            let newRutinesClient = cliente[0].rutinas.filter(item => item.key !== rutine.key);
             newRutinesClient.push(rutine);
             cliente[0].rutinas = newRutinesClient;
 

@@ -17,14 +17,14 @@ export default function CardRutine({ name, description, rutina, openModal }) {
     const [preview, setPreview] = useState(false);
 
     const deleteRutine = () => {
-        rutinesController.deleteRutine(name, rutina);
+        rutinesController.deleteRutine(rutina);
         setTimeout(() => {
             dispatch(getAllRutines());
         }, 500);
     }
 
     const descargarPDF = () => {
-        pdfController.downloadRutine(rutina)
+        pdfController.loadPDF(rutina, 'download');
     }
 
     const editarRutina = () => {
@@ -41,9 +41,9 @@ export default function CardRutine({ name, description, rutina, openModal }) {
                     <Card.Header>
                         {nameRutine}
                         <div>
-                            <span className='metaInfo'>Asignado a: {(rutina.dataRutine.assignedTo.key === 0) ? 'Nadie' : rutina.dataRutine.assignedTo.text}</span>
+                            <span className='metaInfo'>Asignado a: {(rutina.assignedTo.key === 0) ? 'Nadie' : rutina.assignedTo.text}</span>
                             {
-                                (rutina.dataRutine.startProgram === null) ? <span></span> : <span className='metaInfo'>Fecha de inicio: {moment(rutina.dataRutine.startProgram).format('DD/M/YY')}</span>
+                                (rutina.startProgram === null) ? <span></span> : <span className='metaInfo'>Fecha de inicio: {moment(rutina.startProgram).format('DD/M/YY')}</span>
                             }
                         </div>
                     </Card.Header>

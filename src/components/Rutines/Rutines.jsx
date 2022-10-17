@@ -73,9 +73,9 @@ export function Rutines() {
                     {
                         rutinas.map((rutina) => (
                             <CardRutine
-                                key={rutina.dataRutine.key}
-                                name={rutina.dataRutine.name}
-                                description={rutina.dataRutine.description}
+                                key={rutina.key}
+                                name={rutina.name}
+                                description={rutina.description}
                                 rutina={rutina}
                                 openModal={openModal}
                             />

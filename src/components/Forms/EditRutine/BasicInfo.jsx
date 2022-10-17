@@ -1,7 +1,7 @@
 import React from 'react';
+import { Form, Button, Icon, Select } from 'semantic-ui-react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Form, Button, Icon, Select } from 'semantic-ui-react';
 import '../NewRutine/BasicInfo.scss';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -10,27 +10,25 @@ registerLocale('es', es)
 
 export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionClients }) {
 
-    let valueDate = (dataRutine.startProgram === null) ? null : dataRutine.startProgram;
+    function validationSchema() {
+        return Yup.object({
+            name: Yup.string().required(true),
+        })
+    }
 
-    // function validationSchema() {
-    //     return Yup.object({
-    //         name: Yup.string().required(true),
-    //     })
-    // }
-
-    // const formik = useFormik({
-    //     initialValues: { name: '' },
-    //     validationSchema: validationSchema(),
-    //     validateOnChange: false,
-    //     onSubmit: async (formValue) => {
-    //         try {
-    //             setDataRutine({ ...dataRutine, name: formValue.name });
-    //             nextStep();
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    // })
+    const formik = useFormik({
+        initialValues: { name: dataRutine.name },
+        validationSchema: validationSchema(),
+        validateOnChange: false,
+        onSubmit: async (formValue) => {
+            try {
+                setDataRutine({ ...dataRutine, name: formValue.name });
+                nextStep();
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    })
 
     return (
         <>
@@ -42,12 +40,11 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                             name='name'
                             type='text'
                             placeholder='Nombre de la rutina...'
-                            value={dataRutine.name}
-                            onChange={(e) => setDataRutine({ ...dataRutine, name: e.target.value })}
-                            // onChange={(e) => {
-                            //     // setDataRutine({ ...dataRutine, name: e.target.value });
-                            //     formik.handleChange
-                            // }}
+                            // value={dataRutine.name}
+                            // onChange={(e) => setDataRutine({ ...dataRutine, name: e.target.value })}
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
+                            error={formik.errors.name}
                             className='firstRep'
                             width={15}
                         />
@@ -74,10 +71,9 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                         />
                         <label className='basicInfo-form__labelProgramStart'>Inicio del programa:</label>
                         <DatePicker
-                            selected={valueDate}
+                            selected={dataRutine.startProgram}
                             onChange={date => {
                                 setDataRutine({ ...dataRutine, startProgram: date });
-                                valueDate = date;
                                 // formik.setFieldValue('startDate', date)
                             }}
                             placeholderText='Seleccione una fecha...'
@@ -97,7 +93,7 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                     />
                 </div>
             </Form>
-            <Button onClick={nextStep} color='violet' icon labelPosition='right'>
+            <Button type='submit' onClick={formik.handleSubmit} color='violet' icon labelPosition='right'>
                 Siguiente
                 <Icon name='right arrow' />
             </Button>

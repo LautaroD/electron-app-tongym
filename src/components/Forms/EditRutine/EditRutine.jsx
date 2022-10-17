@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Rutines, GeneratorPDF } from '../../../api';
+import { Rutines } from '../../../api';
 import '../NewRutine/NewRutine.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import SerieOne from './SerieOne';
@@ -9,7 +9,6 @@ import BasicInfo from './BasicInfo';
 import { getAllExercises, getAllRutines, getAllClients, setLoadingFalse, setLoadingTrue } from '../../../redux/actions';
 
 const rutinesController = new Rutines();
-const pdfController = new GeneratorPDF();
 
 export function EditRutine({ onClose, openAlert }) {
     const dispatch = useDispatch();
@@ -26,95 +25,257 @@ export function EditRutine({ onClose, openAlert }) {
     }, [])
 
     const [dataRutine, setDataRutine] = useState({
-        name: editRutine.dataRutine.name,
-        description: editRutine.dataRutine.description,
-        key: editRutine.dataRutine.key,
+        name: editRutine.name,
+        description: editRutine.description,
+        key: editRutine.key,
         assignedTo: {
-            value: editRutine.dataRutine.assignedTo.value,
-            text: editRutine.dataRutine.assignedTo.text,
-            key: editRutine.dataRutine.assignedTo.key
+            value: editRutine.assignedTo.value,
+            text: editRutine.assignedTo.text,
+            key: editRutine.assignedTo.key
         },
-        startProgram: (editRutine.dataRutine.startProgram === null) ? null : new Date(editRutine.dataRutine.startProgram)
+        startProgram: (editRutine.startProgram === null) ? null : new Date(editRutine.startProgram)
     })
 
-    const [serieOne, setSerieOne] = useState({
+    const [dayOneFirst, setDayOneFirst] = useState({
         1: {
-            firstExercise: editRutine.serieOne[1].firstExercise,
-            firstRep: editRutine.serieOne[1].firstRep,
-            firstWeight: editRutine.serieOne[1].firstWeight,
-            firstType: editRutine.serieOne[1].firstType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         2: {
-            secondExercise: editRutine.serieOne[2].secondExercise,
-            secondRep: editRutine.serieOne[2].secondRep,
-            secondWeight: editRutine.serieOne[2].secondWeight,
-            secondType: editRutine.serieOne[2].secondType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         3: {
-            thirdExercise: editRutine.serieOne[3].thirdExercise,
-            thirdRep: editRutine.serieOne[3].thirdRep,
-            thirdWeight: editRutine.serieOne[3].thirdWeight,
-            thirdType: editRutine.serieOne[3].thirdType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         4: {
-            fourthExercise: editRutine.serieOne[4].fourthExercise,
-            fourthRep: editRutine.serieOne[4].fourthRep,
-            fourthWeight: editRutine.serieOne[4].fourthWeight,
-            fourthType: editRutine.serieOne[4].fourthType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    })
+
+    const [dayOneSecond, setDayOneSecond] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         }
     });
 
-    const [serieTwo, setSerieTwo] = useState({
+    const [dayOneThird, setDayOneThird] = useState({
         1: {
-            firstExercise: editRutine.serieTwo[1].firstExercise,
-            firstRep: editRutine.serieTwo[1].firstRep,
-            firstWeight: editRutine.serieTwo[1].firstWeight,
-            firstType: editRutine.serieTwo[1].firstType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         2: {
-            secondExercise: editRutine.serieTwo[2].secondExercise,
-            secondRep: editRutine.serieTwo[2].secondRep,
-            secondWeight: editRutine.serieTwo[2].secondWeight,
-            secondType: editRutine.serieTwo[2].secondType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         3: {
-            thirdExercise: editRutine.serieTwo[3].thirdExercise,
-            thirdRep: editRutine.serieTwo[3].thirdRep,
-            thirdWeight: editRutine.serieTwo[3].thirdWeight,
-            thirdType: editRutine.serieTwo[3].thirdType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         4: {
-            fourthExercise: editRutine.serieTwo[4].fourthExercise,
-            fourthRep: editRutine.serieTwo[4].fourthRep,
-            fourthWeight: editRutine.serieTwo[4].fourthWeight,
-            fourthType: editRutine.serieTwo[4].fourthType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         }
     });
 
-    const [serieThree, setSerieThree] = useState({
+    const [dayTwoFirst, setDayTwoFirst] = useState({
         1: {
-            firstExercise: editRutine.serieThree[1].firstExercise,
-            firstRep: editRutine.serieThree[1].firstRep,
-            firstWeight: editRutine.serieThree[1].firstWeight,
-            firstType: editRutine.serieThree[1].firstType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         2: {
-            secondExercise: editRutine.serieThree[2].secondExercise,
-            secondRep: editRutine.serieThree[2].secondRep,
-            secondWeight: editRutine.serieThree[2].secondWeight,
-            secondType: editRutine.serieThree[2].secondType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         3: {
-            thirdExercise: editRutine.serieThree[3].thirdExercise,
-            thirdRep: editRutine.serieThree[3].thirdRep,
-            thirdWeight: editRutine.serieThree[3].thirdWeight,
-            thirdType: editRutine.serieThree[3].thirdType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         4: {
-            fourthExercise: editRutine.serieThree[4].fourthExercise,
-            fourthRep: editRutine.serieThree[4].fourthRep,
-            fourthWeight: editRutine.serieThree[4].fourthWeight,
-            fourthType: editRutine.serieThree[4].fourthType
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    })
+
+    const [dayTwoSecond, setDayTwoSecond] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    });
+
+    const [dayTwoThird, setDayTwoThird] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    });
+
+    const [dayThreeFirst, setDayThreeFirst] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    })
+
+    const [dayThreeSecond, setDayThreeSecond] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    });
+
+    const [dayThreeThird, setDayThreeThird] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         }
     });
 
@@ -124,12 +285,15 @@ export function EditRutine({ onClose, openAlert }) {
     }
 
     const nextStep = () => {
-        if (step === 3) return
+        if (step === 9) return
         setStep(step + 1)
     }
 
     const handleSubmit = async () => {
-        await rutinesController.editRutine({ dataRutine, serieOne, serieTwo, serieThree });
+        dataRutine.dayOne = { dayOneFirst, dayOneSecond, dayOneThird };
+        dataRutine.dayTwo = { dayTwoFirst, dayTwoSecond, dayTwoThird };
+        dataRutine.dayThree = { dayThreeFirst, dayThreeSecond, dayThreeThird };
+        await rutinesController.editRutine(dataRutine, 'savedb');
         dispatch(setLoadingTrue());
         setTimeout(() => {
             dispatch(getAllRutines());
@@ -162,8 +326,9 @@ export function EditRutine({ onClose, openAlert }) {
                     ejercicios={ejercicios}
                     nextStep={nextStep}
                     prevStep={prevStep}
-                    serieOne={serieOne}
-                    setSerieOne={setSerieOne}
+                    firstSerie={dayOneFirst}
+                    setFirstSerie={setDayOneFirst}
+                    day='Dia uno'
                 />
             )
         case 2:
@@ -172,8 +337,9 @@ export function EditRutine({ onClose, openAlert }) {
                     ejercicios={ejercicios}
                     nextStep={nextStep}
                     prevStep={prevStep}
-                    serieTwo={serieTwo}
-                    setSerieTwo={setSerieTwo}
+                    secondSerie={dayOneSecond}
+                    setSecondSerie={setDayOneSecond}
+                    day='Dia uno'
                 />
             )
         case 3:
@@ -182,12 +348,79 @@ export function EditRutine({ onClose, openAlert }) {
                     ejercicios={ejercicios}
                     nextStep={nextStep}
                     prevStep={prevStep}
-                    serieThree={serieThree}
-                    setSerieThree={setSerieThree}
+                    thirdSerie={dayOneThird}
+                    setThirdSerie={setDayOneThird}
+                    day='Dia uno'
+                />
+            )
+        case 4:
+            return (
+                <SerieOne
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    firstSerie={dayTwoFirst}
+                    setFirstSerie={setDayTwoFirst}
+                    day='Dia dos'
+                />
+            )
+        case 5:
+            return (
+                <SerieTwo
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    secondSerie={dayTwoSecond}
+                    setSecondSerie={setDayTwoSecond}
+                    day='Dia dos'
+                />
+            )
+        case 6:
+            return (
+                <SerieThree
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    thirdSerie={dayTwoThird}
+                    setThirdSerie={setDayTwoThird}
+                    day='Dia dos'
+                />
+            )
+        case 7:
+            return (
+                <SerieOne
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    firstSerie={dayThreeFirst}
+                    setFirstSerie={setDayThreeFirst}
+                    day='Dia tres'
+                />
+            )
+        case 8:
+            return (
+                <SerieTwo
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    secondSerie={dayThreeSecond}
+                    setSecondSerie={setDayThreeSecond}
+                    day='Dia tres'
+                />
+            )
+        case 9:
+            return (
+                <SerieThree
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    thirdSerie={dayThreeThird}
+                    setThirdSerie={setDayThreeThird}
                     handleSubmit={handleSubmit}
+                    day='Dia tres'
                 />
             )
         default:
-            console.log('Error');
+            console.log('Error');;
     }
 }

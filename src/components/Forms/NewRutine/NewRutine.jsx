@@ -36,84 +36,246 @@ export function NewRutine({ onClose, openAlert }) {
         startProgram: null
     })
 
-    const [firstSerie, setFirstSerie] = useState({
+    const [dayOneFirst, setDayOneFirst] = useState({
         1: {
-            firstExercise: '',
-            firstRep: 0,
-            firstWeight: 0,
-            firstType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         2: {
-            secondExercise: '',
-            secondRep: 0,
-            secondWeight: 0,
-            secondType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         3: {
-            thirdExercise: '',
-            thirdRep: 0,
-            thirdWeight: 0,
-            thirdType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         4: {
-            fourthExercise: '',
-            fourthRep: 0,
-            fourthWeight: 0,
-            fourthType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    })
+
+    const [dayOneSecond, setDayOneSecond] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         }
     });
 
-    const [secondSerie, setSecondSerie] = useState({
+    const [dayOneThird, setDayOneThird] = useState({
         1: {
-            firstExercise: '',
-            firstRep: 0,
-            firstWeight: 0,
-            firstType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         2: {
-            secondExercise: '',
-            secondRep: 0,
-            secondWeight: 0,
-            secondType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         3: {
-            thirdExercise: '',
-            thirdRep: 0,
-            thirdWeight: 0,
-            thirdType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         4: {
-            fourthExercise: '',
-            fourthRep: 0,
-            fourthWeight: 0,
-            fourthType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         }
     });
 
-    const [thirdSerie, setThirdSerie] = useState({
+    const [dayTwoFirst, setDayTwoFirst] = useState({
         1: {
-            firstExercise: '',
-            firstRep: 0,
-            firstWeight: 0,
-            firstType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         2: {
-            secondExercise: '',
-            secondRep: 0,
-            secondWeight: 0,
-            secondType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         3: {
-            thirdExercise: '',
-            thirdRep: 0,
-            thirdWeight: 0,
-            thirdType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         },
         4: {
-            fourthExercise: '',
-            fourthRep: 0,
-            fourthWeight: 0,
-            fourthType: ''
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    })
+
+    const [dayTwoSecond, setDayTwoSecond] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    });
+
+    const [dayTwoThird, setDayTwoThird] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    });
+
+    const [dayThreeFirst, setDayThreeFirst] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    })
+
+    const [dayThreeSecond, setDayThreeSecond] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        }
+    });
+
+    const [dayThreeThird, setDayThreeThird] = useState({
+        1: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        2: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        3: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
+        },
+        4: {
+            exercise: '',
+            rep: 0,
+            weight: 0,
+            type: ''
         }
     });
 
@@ -123,14 +285,16 @@ export function NewRutine({ onClose, openAlert }) {
     }
 
     const nextStep = () => {
-        if (step === 3) return
+        if (step === 9) return
         setStep(step + 1)
     }
 
     const handleSubmit = async () => {
-        console.log(dataRutine);
-        await pdfController.savePDF({ dataRutine, firstSerie, secondSerie, thirdSerie });
-        let result = await rutinesController.createRutine(dataRutine, firstSerie, secondSerie, thirdSerie);
+        dataRutine.dayOne = { dayOneFirst, dayOneSecond, dayOneThird };
+        dataRutine.dayTwo = { dayTwoFirst, dayTwoSecond, dayTwoThird };
+        dataRutine.dayThree = { dayThreeFirst, dayThreeSecond, dayThreeThird };
+        await pdfController.loadPDF(dataRutine, 'savedb');
+        let result = await rutinesController.createRutine(dataRutine);
         openAlert(result.type, result.message);
         setTimeout(() => {
             dispatch(getAllRutines());
@@ -161,8 +325,9 @@ export function NewRutine({ onClose, openAlert }) {
                     ejercicios={ejercicios}
                     nextStep={nextStep}
                     prevStep={prevStep}
-                    firstSerie={firstSerie}
-                    setFirstSerie={setFirstSerie}
+                    firstSerie={dayOneFirst}
+                    setFirstSerie={setDayOneFirst}
+                    day='Dia uno'
                 />
             )
         case 2:
@@ -171,8 +336,9 @@ export function NewRutine({ onClose, openAlert }) {
                     ejercicios={ejercicios}
                     nextStep={nextStep}
                     prevStep={prevStep}
-                    secondSerie={secondSerie}
-                    setSecondSerie={setSecondSerie}
+                    secondSerie={dayOneSecond}
+                    setSecondSerie={setDayOneSecond}
+                    day='Dia uno'
                 />
             )
         case 3:
@@ -181,9 +347,76 @@ export function NewRutine({ onClose, openAlert }) {
                     ejercicios={ejercicios}
                     nextStep={nextStep}
                     prevStep={prevStep}
-                    thirdSerie={thirdSerie}
-                    setThirdSerie={setThirdSerie}
+                    thirdSerie={dayOneThird}
+                    setThirdSerie={setDayOneThird}
+                    day='Dia uno'
+                />
+            )
+        case 4:
+            return (
+                <SerieOne
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    firstSerie={dayTwoFirst}
+                    setFirstSerie={setDayTwoFirst}
+                    day='Dia dos'
+                />
+            )
+        case 5:
+            return (
+                <SerieTwo
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    secondSerie={dayTwoSecond}
+                    setSecondSerie={setDayTwoSecond}
+                    day='Dia dos'
+                />
+            )
+        case 6:
+            return (
+                <SerieThree
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    thirdSerie={dayTwoThird}
+                    setThirdSerie={setDayTwoThird}
+                    day='Dia dos'
+                />
+            )
+        case 7:
+            return (
+                <SerieOne
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    firstSerie={dayThreeFirst}
+                    setFirstSerie={setDayThreeFirst}
+                    day='Dia tres'
+                />
+            )
+        case 8:
+            return (
+                <SerieTwo
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    secondSerie={dayThreeSecond}
+                    setSecondSerie={setDayThreeSecond}
+                    day='Dia tres'
+                />
+            )
+        case 9:
+            return (
+                <SerieThree
+                    ejercicios={ejercicios}
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    thirdSerie={dayThreeThird}
+                    setThirdSerie={setDayThreeThird}
                     handleSubmit={handleSubmit}
+                    day='Dia tres'
                 />
             )
         default:

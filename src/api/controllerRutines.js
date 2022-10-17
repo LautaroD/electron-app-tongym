@@ -17,7 +17,7 @@ export class Rutines {
 
             let exists = false;
             rutines.forEach(rutine => {
-                let arrayRutine = Object.values(rutine.dataRutine);
+                let arrayRutine = Object.values(rutine.name);
                 if (arrayRutine.includes(rutineName)) return exists = true;
             });
             if (exists) return { type: 'error', message: 'Rutina ya existente' }
@@ -27,17 +27,17 @@ export class Rutines {
         }
     }
 
-    async createRutine(dataRutine, serieOne, serieTwo, serieThree) {
+    async createRutine(dataRutine) {
         try {
             let result = await this.validateRutine(dataRutine.name)
             if (result.type === 'error') return result
             else {
                 // Formateamos como queremos que se guarde la rutina en el .JSON
-                let rutina = { dataRutine, serieOne, serieTwo, serieThree }
+                // let rutina = { dataRutine, firstSerie, secondSerie, thirdSerie }
 
                 let rutines = fs2.readFileSync(this.dataRutines);
                 rutines = JSON.parse(rutines);
-                rutines.push(rutina);
+                rutines.push(dataRutine);
                 rutines = JSON.stringify(rutines);
 
                 await fs.writeFile(path.join(this.data, `rutines.json`), rutines, (err) => {
@@ -47,7 +47,7 @@ export class Rutines {
                 // Verificamos si a la rutina se le asigno un cliente:
                 if (dataRutine.assignedTo.key !== 0) {
                     let controllerClient = new Client();
-                    await controllerClient.addRutineToClient(dataRutine.assignedTo.key, rutina);
+                    await controllerClient.addRutineToClient(dataRutine.assignedTo.key, dataRutine);
                 }
                 return { type: 'success', message: 'Rutina creada con éxito' }
             }
@@ -66,26 +66,26 @@ export class Rutines {
         }
     }
 
-    async deleteRutine(name, rutina) {
+    async deleteRutine(rutina) {
         const formatMonth = { 1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril', 5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto', 9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre' };
         try {
             let rutines = await fs2.readFileSync(this.dataRutines);
             rutines = JSON.parse(rutines);
 
-            rutines = rutines.filter(rutine => rutine.dataRutine.key !== rutina.dataRutine.key);
+            rutines = rutines.filter(rutine => rutine.key !== rutina.key);
             rutines = JSON.stringify(rutines);
             await fs.writeFile(path.join(this.data, `rutines.json`), rutines, (err) => {
                 if (err) throw err;
             });
 
-            if (rutina.dataRutine.startProgram !== null) {
-                let folderMonth = `${formatMonth[(moment(rutina.dataRutine.startProgram).month() + 1)]}-${moment(rutina.dataRutine.startProgram).year()}`
-                await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutina.dataRutine.key}.pdf`), function (err) {
+            if (rutina.startProgram !== null) {
+                let folderMonth = `${formatMonth[(moment(rutina.startProgram).month() + 1)]}-${moment(rutina.startProgram).year()}`
+                await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutina.key}.pdf`), function (err) {
                     if (err) return console.log(err);
                 });
             } else {
                 let folderMonth = `${formatMonth[(moment().month() + 1)]}-${moment().year()}`
-                await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutina.dataRutine.key}.pdf`), function (err) {
+                await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutina.key}.pdf`), function (err) {
                     if (err) return console.log(err);
                 });
             }
@@ -110,7 +110,7 @@ export class Rutines {
         }
     }
 
-    async editRutine(data) {
+    async editRutine(data, type) {
         const formatMonth = { 1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril', 5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto', 9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre' };
 
         try {
@@ -118,7 +118,7 @@ export class Rutines {
             let rutines = await fs2.readFileSync(this.dataRutines);
             rutines = JSON.parse(rutines);
 
-            rutines = rutines.filter(item => item.dataRutine.key !== data.dataRutine.key);
+            rutines = rutines.filter(item => item.key !== data.key);
             rutines.push(data);
             rutines = JSON.stringify(rutines);
 
@@ -128,21 +128,21 @@ export class Rutines {
 
 
             //Editamos archivo PDF ya guardado en base de datos
-            if (data.dataRutine.startProgram !== null) {
-                let folderMonth = `${formatMonth[(moment(data.dataRutine.startProgram).month() + 1)]}-${moment(data.dataRutine.startProgram).year()}`
-                await fs.unlink(path.join(this.pathRutines, folderMonth, `${data.dataRutine.key}.pdf`), function (err) {
+            if (data.startProgram !== null) {
+                let folderMonth = `${formatMonth[(moment(data.startProgram).month() + 1)]}-${moment(data.startProgram).year()}`
+                await fs.unlink(path.join(this.pathRutines, folderMonth, `${data.key}.pdf`), function (err) {
                     if (err) return console.log(err);
                 });
             } else {
                 let folderMonth = `${formatMonth[(moment().month() + 1)]}-${moment().year()}`
-                await fs.unlink(path.join(this.pathRutines, folderMonth, `${data.dataRutine.key}.pdf`), function (err) {
+                await fs.unlink(path.join(this.pathRutines, folderMonth, `${data.key}.pdf`), function (err) {
                     if (err) return console.log(err);
                 });
             }
-            await controllerPDF.editRutine(data);
+            await controllerPDF.loadPDF(data, 'savedb');
 
 
-            if (data.dataRutine.assignedTo.key !== 0) {
+            if (data.assignedTo.key !== 0) {
                 let controllerClient = new Client();
                 await controllerClient.editRutineClient(data);
             }

@@ -26,10 +26,10 @@ function createWindow() {
     );
 
     if (isDev) mainWindow.webContents.openDevTools();
+    if (!isDev) mainWindow.removeMenu();
 
     autoUpdater.checkForUpdatesAndNotify();
 
-    // mainWindow.removeMenu();
     mainWindow.on("closed", () => (mainWindow = null));
 }
 

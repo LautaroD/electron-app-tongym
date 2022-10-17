@@ -1,11 +1,11 @@
 import React from 'react';
 import { Form, Select, Button, Icon } from 'semantic-ui-react';
 
-export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ejercicios }) {
+export default function SerieTwo({ nextStep, prevStep, secondSerie, setSecondSerie, ejercicios, day }) {
     return (
         <>
             <Form style={{ padding: '15px' }}>
-                <h2>Serie 2</h2>
+                <h2>{day} - serie 2</h2>
                 <Form.Group >
                     <Form.Field
                         name='firstExercise'
@@ -17,15 +17,15 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         searchInput={{ id: 'form-select-control-gender' }}
                         className='firstExercise'
                         width={5}
-                        value={serieTwo[1].firstExercise}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 1: { ...serieTwo[1], firstExercise: e.target.innerText } })}
+                        value={secondSerie[1].exercise}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 1: { ...secondSerie[1], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
                         name='firstRep'
                         type='number'
-                        value={serieTwo[1].firstRep}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 1: { ...serieTwo[1], firstRep: e.target.value } })}
+                        value={secondSerie[1].rep}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 1: { ...secondSerie[1], rep: e.target.value } })}
                         className='firstRep'
                         width={2}
                     />
@@ -33,8 +33,8 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         label='Peso (kg)'
                         name='firstWeight'
                         type='number'
-                        value={serieTwo[1].firstWeight}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 1: { ...serieTwo[1], firstWeight: e.target.value } })}
+                        value={secondSerie[1].weight}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 1: { ...secondSerie[1], weight: e.target.value } })}
                         className='firstWeight'
                         width={2}
                     />
@@ -42,8 +42,8 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         label='Tipo'
                         name='firstType'
                         placeholder="Descripción..."
-                        value={serieTwo[1].firstType}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 1: { ...serieTwo[1], firstType: e.target.value } })}
+                        value={secondSerie[1].type}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 1: { ...secondSerie[1], type: e.target.value } })}
                         className='firstType'
                         width={7}
                     />
@@ -60,15 +60,15 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         searchInput={{ id: 'form-select-control-gender' }}
                         className='secondExercise'
                         width={5}
-                        value={serieTwo[2].secondExercise}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 2: { ...serieTwo[2], secondExercise: e.target.innerText } })}
+                        value={secondSerie[2].exercise}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 2: { ...secondSerie[2], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
                         name='secondRep'
                         type='number'
-                        value={serieTwo[2].secondRep}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 2: { ...serieTwo[2], secondRep: e.target.value } })}
+                        value={secondSerie[2].rep}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 2: { ...secondSerie[2], rep: e.target.value } })}
                         className='secondRep'
                         width={2}
                     />
@@ -76,8 +76,8 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         label='Peso (kg)'
                         name='secondWeight'
                         type='number'
-                        value={serieTwo[2].secondWeight}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 2: { ...serieTwo[2], secondWeight: e.target.value } })}
+                        value={secondSerie[2].weight}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 2: { ...secondSerie[2], weight: e.target.value } })}
                         className='secondWeight'
                         width={2}
                     />
@@ -85,8 +85,8 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         label='Tipo'
                         name='secondType'
                         placeholder="Descripción..."
-                        value={serieTwo[2].secondType}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 2: { ...serieTwo[2], secondType: e.target.value } })}
+                        value={secondSerie[2].type}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 2: { ...secondSerie[2], type: e.target.value } })}
                         className='secondType'
                         width={7}
                     />
@@ -103,15 +103,15 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         searchInput={{ id: 'form-select-control-gender' }}
                         className='thirdExercise'
                         width={5}
-                        value={serieTwo[3].thirdExercise}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 3: { ...serieTwo[3], thirdExercise: e.target.innerText } })}
+                        value={secondSerie[3].exercise}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 3: { ...secondSerie[3], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
                         name='thirdRep'
                         type='number'
-                        value={serieTwo[3].thirdRep}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 3: { ...serieTwo[3], thirdRep: e.target.value } })}
+                        value={secondSerie[3].rep}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 3: { ...secondSerie[3], rep: e.target.value } })}
                         className='thirdRep'
                         width={2}
                     />
@@ -119,8 +119,8 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         label='Peso (kg)'
                         name='thirdWeight'
                         type='number'
-                        value={serieTwo[3].thirdWeight}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 3: { ...serieTwo[3], thirdWeight: e.target.value } })}
+                        value={secondSerie[3].weight}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 3: { ...secondSerie[3], weight: e.target.value } })}
                         className='thirdWeight'
                         width={2}
                     />
@@ -128,8 +128,8 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         label='Tipo'
                         name='thirdType'
                         placeholder="Descripción..."
-                        value={serieTwo[3].thirdType}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 3: { ...serieTwo[3], thirdType: e.target.value } })}
+                        value={secondSerie[3].type}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 3: { ...secondSerie[3], type: e.target.value } })}
                         className='thirdType'
                         width={7}
                     />
@@ -146,15 +146,15 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         searchInput={{ id: 'form-select-control-gender' }}
                         className='fourthExercise'
                         width={5}
-                        value={serieTwo[4].fourthExercise}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 4: { ...serieTwo[4], fourthExercise: e.target.innerText } })}
+                        value={secondSerie[4].exercise}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 4: { ...secondSerie[4], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
                         name='fourthRep'
                         type='number'
-                        value={serieTwo[4].fourthRep}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 4: { ...serieTwo[4], fourthRep: e.target.value } })}
+                        value={secondSerie[4].rep}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 4: { ...secondSerie[4], rep: e.target.value } })}
                         className='fourthRep'
                         width={2}
                     />
@@ -162,8 +162,8 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         label='Peso (kg)'
                         name='fourthWeight'
                         type='number'
-                        value={serieTwo[4].fourthWeight}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 4: { ...serieTwo[4], fourthWeight: e.target.value } })}
+                        value={secondSerie[4].weight}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 4: { ...secondSerie[4], weight: e.target.value } })}
                         className='fourthWeight'
                         width={2}
                     />
@@ -171,8 +171,8 @@ export default function SerieTwo({ nextStep, prevStep, serieTwo, setSerieTwo, ej
                         label='Tipo'
                         name='fourthType'
                         placeholder="Descripción..."
-                        value={serieTwo[4].fourthType}
-                        onChange={(e) => setSerieTwo({ ...serieTwo, 4: { ...serieTwo[4], fourthType: e.target.value } })}
+                        value={secondSerie[4].type}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 4: { ...secondSerie[4], type: e.target.value } })}
                         className='fourthType'
                         width={7}
                     />

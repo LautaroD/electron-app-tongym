@@ -16,7 +16,7 @@ export default function SinglePage({ rutina }) {
     }
 
     const getPDF = async () => {
-        let result = await controllerPDF.loadPDF(rutina);
+        let result = await controllerPDF.loadPDF(rutina, 'preview');
         setFilePDF(result);
     }
 
