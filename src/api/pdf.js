@@ -50,139 +50,139 @@ export class GeneratorPDF {
             doc.setFontSize(12);
             if (data.dayOne.dayOneFirst[1].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneFirst[1].exercise, ' ');
-                doc.text(result[0], 18, 71, null, 0);
-                doc.text(result[1], 18, 75, null, 0);
+                doc.text(result[0], 18, 71, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 75, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneFirst[1].exercise, 18, 75, null, 0);
+                doc.text(data.dayOne.dayOneFirst[1].exercise, 18, 75, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneFirst[1].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[1].rep), 96, 75, null, 0);
-            doc.text((String(data.dayOne.dayOneFirst[1].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[1].weight), 126, 75, null, 0);
-            doc.text(data.dayOne.dayOneFirst[1].type, 146, 75, null, 0);
+            doc.text((String(data.dayOne.dayOneFirst[1].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[1].rep), 96, 75, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneFirst[1].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[1].weight), 126, 75, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneFirst[1].type, 146, 75, { renderingMode: renderMode }, 0);
 
             if (data.dayOne.dayOneFirst[2].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneFirst[2].exercise, ' ');
-                doc.text(result[0], 18, 78, null, 0);
-                doc.text(result[1], 18, 82, null, 0);
+                doc.text(result[0], 18, 78, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 82, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneFirst[2].exercise, 18, 82, null, 0);
+                doc.text(data.dayOne.dayOneFirst[2].exercise, 18, 82, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneFirst[2].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[2].rep), 96, 82, null, 0);
-            doc.text((String(data.dayOne.dayOneFirst[2].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[2].weight), 126, 82, null, 0);
-            doc.text(data.dayOne.dayOneFirst[2].type, 146, 82, null, 0);
+            doc.text((String(data.dayOne.dayOneFirst[2].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[2].rep), 96, 82, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneFirst[2].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[2].weight), 126, 82, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneFirst[2].type, 146, 82, { renderingMode: renderMode }, 0);
 
             if (data.dayOne.dayOneFirst[3].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneFirst[3].exercise, ' ');
-                doc.text(result[0], 18, 86, null, 0);
-                doc.text(result[1], 18, 90, null, 0);
+                doc.text(result[0], 18, 86, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 90, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneFirst[3].exercise, 18, 90, null, 0);
+                doc.text(data.dayOne.dayOneFirst[3].exercise, 18, 90, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneFirst[3].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[3].rep), 96, 90, null, 0);
-            doc.text((String(data.dayOne.dayOneFirst[3].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[3].weight), 126, 90, null, 0);
-            doc.text(data.dayOne.dayOneFirst[3].type, 146, 90, null, 0);
+            doc.text((String(data.dayOne.dayOneFirst[3].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[3].rep), 96, 90, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneFirst[3].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[3].weight), 126, 90, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneFirst[3].type, 146, 90, { renderingMode: renderMode }, 0);
 
             if (data.dayOne.dayOneFirst[4].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneFirst[4].exercise, ' ');
-                doc.text(result[0], 18, 93, null, 0);
-                doc.text(result[1], 18, 97, null, 0);
+                doc.text(result[0], 18, 93, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 97, { renderingMode: renderMode }, 0);
             } else {
                 doc.text(data.dayOne.dayOneFirst[4].exercise, 18, 97, null, 0);
             }
-            doc.text((String(data.dayOne.dayOneFirst[4].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[4].rep), 96, 97, null, 0);
-            doc.text((String(data.dayOne.dayOneFirst[4].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[4].weight), 126, 97, null, 0);
-            doc.text(data.dayOne.dayOneFirst[4].type, 146, 97, null, 0);
+            doc.text((String(data.dayOne.dayOneFirst[4].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[4].rep), 96, 97, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneFirst[4].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[4].weight), 126, 97, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneFirst[4].type, 146, 97, { renderingMode: renderMode }, 0);
             //=======================================
 
             // DIA UNO - SERIE 2
             if (data.dayOne.dayOneSecond[1].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneSecond[1].exercise, ' ');
-                doc.text(result[0], 18, 119, null, 0);
-                doc.text(result[1], 18, 123, null, 0);
+                doc.text(result[0], 18, 119, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 123, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneSecond[1].exercise, 18, 123, null, 0);
+                doc.text(data.dayOne.dayOneSecond[1].exercise, 18, 122, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneSecond[1].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[1].rep), 96, 123, null, 0);
-            doc.text((String(data.dayOne.dayOneSecond[1].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[1].weight), 126, 123, null, 0);
-            doc.text(data.dayOne.dayOneSecond[1].type, 146, 123, null, 0);
+            doc.text((String(data.dayOne.dayOneSecond[1].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[1].rep), 96, 123, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneSecond[1].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[1].weight), 126, 123, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneSecond[1].type, 146, 123, { renderingMode: renderMode }, 0);
 
             if (data.dayOne.dayOneSecond[2].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneSecond[2].exercise, ' ');
-                doc.text(result[0], 18, 126, null, 0);
-                doc.text(result[1], 18, 130, null, 0);
+                doc.text(result[0], 18, 126, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 130, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneSecond[2].exercise, 18, 130, null, 0);
+                doc.text(data.dayOne.dayOneSecond[2].exercise, 18, 130, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneSecond[2].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[2].rep), 96, 130, null, 0);
-            doc.text((String(data.dayOne.dayOneSecond[2].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[2].weight), 126, 130, null, 0);
-            doc.text(data.dayOne.dayOneSecond[2].type, 146, 130, null, 0);
+            doc.text((String(data.dayOne.dayOneSecond[2].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[2].rep), 96, 130, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneSecond[2].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[2].weight), 126, 130, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneSecond[2].type, 146, 130, { renderingMode: renderMode }, 0);
 
             if (data.dayOne.dayOneSecond[3].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneSecond[3].exercise, ' ');
-                doc.text(result[0], 18, 133.5, null, 0);
-                doc.text(result[1], 18, 137, null, 0);
+                doc.text(result[0], 18, 133.5, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 137, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneSecond[3].exercise, 18, 137, null, 0);
+                doc.text(data.dayOne.dayOneSecond[3].exercise, 18, 137, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneSecond[3].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[3].rep), 96, 137, null, 0);
-            doc.text((String(data.dayOne.dayOneSecond[3].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[3].weight), 126, 137, null, 0);
-            doc.text(data.dayOne.dayOneSecond[3].type, 146, 137, null, 0);
+            doc.text((String(data.dayOne.dayOneSecond[3].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[3].rep), 96, 137, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneSecond[3].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[3].weight), 126, 137, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneSecond[3].type, 146, 137, { renderingMode: renderMode }, 0);
 
             if (data.dayOne.dayOneSecond[4].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneSecond[4].exercise, ' ');
-                doc.text(result[0], 18, 140, null, 0);
-                doc.text(result[1], 18, 144, null, 0);
+                doc.text(result[0], 18, 140, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 144, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneSecond[4].exercise, 18, 144, null, 0);
+                doc.text(data.dayOne.dayOneSecond[4].exercise, 18, 144, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneSecond[4].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[4].rep), 96, 144, null, 0);
-            doc.text((String(data.dayOne.dayOneSecond[4].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[4].weight), 126, 144, null, 0);
-            doc.text(data.dayOne.dayOneSecond[4].type, 146, 144, null, 0);
+            doc.text((String(data.dayOne.dayOneSecond[4].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[4].rep), 96, 144, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneSecond[4].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[4].weight), 126, 144, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneSecond[4].type, 146, 144, { renderingMode: renderMode }, 0);
             //====================================
 
             // DIA UNO - SERIE 3
             if (data.dayOne.dayOneThird[1].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneThird[1].exercise, ' ');
-                doc.text(result[0], 18, 166, null, 0);
-                doc.text(result[1], 18, 170, null, 0);
+                doc.text(result[0], 18, 166, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 170, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneThird[1].exercise, 18, 170, null, 0);
+                doc.text(data.dayOne.dayOneThird[1].exercise, 18, 170, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneThird[1].rep) === '0') ? '' : String(data.dayOne.dayOneThird[1].rep), 96, 170, null, 0);
-            doc.text((String(data.dayOne.dayOneThird[1].weight) === '0') ? '' : String(data.dayOne.dayOneThird[1].weight), 126, 170, null, 0);
-            doc.text(data.dayOne.dayOneThird[1].type, 146, 170, null, 0);
+            doc.text((String(data.dayOne.dayOneThird[1].rep) === '0') ? '' : String(data.dayOne.dayOneThird[1].rep), 96, 170, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneThird[1].weight) === '0') ? '' : String(data.dayOne.dayOneThird[1].weight), 126, 170, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneThird[1].type, 146, 170, { renderingMode: renderMode }, 0);
 
             if (data.dayOne.dayOneThird[2].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneThird[2].exercise, ' ');
-                doc.text(result[0], 18, 173, null, 0);
-                doc.text(result[1], 18, 177, null, 0);
+                doc.text(result[0], 18, 173, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 177, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneThird[2].exercise, 18, 177, null, 0);
+                doc.text(data.dayOne.dayOneThird[2].exercise, 18, 177, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneThird[2].rep) === '0') ? '' : String(data.dayOne.dayOneThird[2].rep), 96, 177, null, 0);
-            doc.text((String(data.dayOne.dayOneThird[2].weight) === '0') ? '' : String(data.dayOne.dayOneThird[2].weight), 126, 177, null, 0);
-            doc.text(data.dayOne.dayOneThird[2].type, 146, 177, null, 0);
+            doc.text((String(data.dayOne.dayOneThird[2].rep) === '0') ? '' : String(data.dayOne.dayOneThird[2].rep), 96, 177, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneThird[2].weight) === '0') ? '' : String(data.dayOne.dayOneThird[2].weight), 126, 177, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneThird[2].type, 146, 177, { renderingMode: renderMode }, 0);
 
             if (data.dayOne.dayOneThird[3].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneThird[3].exercise, ' ');
-                doc.text(result[0], 18, 181, null, 0);
-                doc.text(result[1], 18, 185, null, 0);
+                doc.text(result[0], 18, 181, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 185, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneThird[3].exercise, 18, 185, null, 0);
+                doc.text(data.dayOne.dayOneThird[3].exercise, 18, 185, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneThird[3].rep) === '0') ? '' : String(data.dayOne.dayOneThird[3].rep), 96, 185, null, 0);
-            doc.text((String(data.dayOne.dayOneThird[3].weight) === '0') ? '' : String(data.dayOne.dayOneThird[3].weight), 126, 185, null, 0);
-            doc.text(data.dayOne.dayOneThird[3].type, 146, 185, null, 0);
+            doc.text((String(data.dayOne.dayOneThird[3].rep) === '0') ? '' : String(data.dayOne.dayOneThird[3].rep), 96, 185, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneThird[3].weight) === '0') ? '' : String(data.dayOne.dayOneThird[3].weight), 126, 185, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneThird[3].type, 146, 185, { renderingMode: renderMode }, 0);
 
             if (data.dayOne.dayOneThird[4].exercise.length > 31) {
                 let result = dividirCadena(data.dayOne.dayOneThird[4].exercise, ' ');
-                doc.text(result[0], 18, 188, null, 0);
-                doc.text(result[1], 18, 192, null, 0);
+                doc.text(result[0], 18, 188, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 18, 192, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneThird[4].exercise, 18, 192, null, 0);
+                doc.text(data.dayOne.dayOneThird[4].exercise, 18, 192, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayOne.dayOneThird[4].rep) === '0') ? '' : String(data.dayOne.dayOneThird[4].rep), 96, 192, null, 0);
-            doc.text((String(data.dayOne.dayOneThird[4].weight) === '0') ? '' : String(data.dayOne.dayOneThird[4].weight), 126, 192, null, 0);
-            doc.text(data.dayOne.dayOneThird[4].type, 146, 192, null, 0);
+            doc.text((String(data.dayOne.dayOneThird[4].rep) === '0') ? '' : String(data.dayOne.dayOneThird[4].rep), 96, 192, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayOne.dayOneThird[4].weight) === '0') ? '' : String(data.dayOne.dayOneThird[4].weight), 126, 192, { renderingMode: renderMode }, 0);
+            doc.text(data.dayOne.dayOneThird[4].type, 146, 192, { renderingMode: renderMode }, 0);
             // ====================================
 
             doc.addPage('a4', 'landscape');
