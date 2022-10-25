@@ -11,6 +11,23 @@ import { getAllExercises, getAllRutines, getAllClients } from '../../../redux/ac
 const rutinesController = new Rutines();
 const pdfController = new GeneratorPDF();
 
+const categories = [
+    { key: '09', value: 'Abdominales', text: 'Abdominales' },
+    { key: '13', value: 'Abductores', text: 'Abductores' },
+    { key: '12', value: 'Aductores', text: 'Aductores' },
+    { key: '11', value: 'Antebrazo', text: 'Antebrazo' },
+    { key: '04', value: 'Bíceps', text: 'Bíceps' },
+    { key: '14', value: 'Cuádriceps', text: 'Cuádriceps' },
+    { key: '02', value: 'Dorsal', text: 'Dorsal' },
+    { key: '03', value: 'Espinales', text: 'Espinales' },
+    { key: '10', value: 'Gemelos', text: 'Gemelos' },
+    { key: '08', value: 'Glúteos', text: 'Glúteos' },
+    { key: '06', value: 'Hombros', text: 'Hombros' },
+    { key: '07', value: 'Isquios', text: 'Isquios' },
+    { key: '01', value: 'Pectoral', text: 'Pectoral' },
+    { key: '05', value: 'Tríceps', text: 'Tríceps' },
+]
+
 export function NewRutine({ onClose, openAlert }) {
     const dispatch = useDispatch();
     const ejercicios = useSelector((state) => state.exercisesReducer.exercises);
@@ -328,6 +345,7 @@ export function NewRutine({ onClose, openAlert }) {
                     firstSerie={dayOneFirst}
                     setFirstSerie={setDayOneFirst}
                     day='Dia uno'
+                    categories={categories}
                 />
             )
         case 2:
@@ -339,6 +357,7 @@ export function NewRutine({ onClose, openAlert }) {
                     secondSerie={dayOneSecond}
                     setSecondSerie={setDayOneSecond}
                     day='Dia uno'
+                    categories={categories}
                 />
             )
         case 3:
@@ -350,6 +369,7 @@ export function NewRutine({ onClose, openAlert }) {
                     thirdSerie={dayOneThird}
                     setThirdSerie={setDayOneThird}
                     day='Dia uno'
+                    categories={categories}
                 />
             )
         case 4:
@@ -361,6 +381,7 @@ export function NewRutine({ onClose, openAlert }) {
                     firstSerie={dayTwoFirst}
                     setFirstSerie={setDayTwoFirst}
                     day='Dia dos'
+                    categories={categories}
                 />
             )
         case 5:
@@ -372,6 +393,7 @@ export function NewRutine({ onClose, openAlert }) {
                     secondSerie={dayTwoSecond}
                     setSecondSerie={setDayTwoSecond}
                     day='Dia dos'
+                    categories={categories}
                 />
             )
         case 6:
@@ -383,6 +405,7 @@ export function NewRutine({ onClose, openAlert }) {
                     thirdSerie={dayTwoThird}
                     setThirdSerie={setDayTwoThird}
                     day='Dia dos'
+                    categories={categories}
                 />
             )
         case 7:
@@ -394,6 +417,7 @@ export function NewRutine({ onClose, openAlert }) {
                     firstSerie={dayThreeFirst}
                     setFirstSerie={setDayThreeFirst}
                     day='Dia tres'
+                    categories={categories}
                 />
             )
         case 8:
@@ -405,6 +429,7 @@ export function NewRutine({ onClose, openAlert }) {
                     secondSerie={dayThreeSecond}
                     setSecondSerie={setDayThreeSecond}
                     day='Dia tres'
+                    categories={categories}
                 />
             )
         case 9:
@@ -417,6 +442,7 @@ export function NewRutine({ onClose, openAlert }) {
                     setThirdSerie={setDayThreeThird}
                     handleSubmit={handleSubmit}
                     day='Dia tres'
+                    categories={categories}
                 />
             )
         default:

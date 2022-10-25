@@ -1,24 +1,27 @@
 import React from 'react';
-import { Form, Select, Button, Icon } from 'semantic-ui-react';
+import { Form, Button, Icon, Input } from 'semantic-ui-react';
+import SelectorNested from '../../SelectorNested/SelectorNested';
 
-export default function SerieTwo({ nextStep, prevStep, secondSerie, setSecondSerie, ejercicios, day }) {
+export default function SerieTwo({ nextStep, prevStep, secondSerie, setSecondSerie, ejercicios, day, categories }) {
     return (
         <>
             <Form style={{ padding: '15px' }}>
                 <h2>{day} - serie 2</h2>
                 <Form.Group >
+                    <SelectorNested categories={categories} exercises={ejercicios} serie={secondSerie} nSerie={1} setSerie={setSecondSerie} />
                     <Form.Field
-                        name='firstExercise'
-                        control={Select}
-                        options={ejercicios}
-                        label={{ children: 'Primer Ejercicio', htmlFor: 'form-select-control-gender' }}
-                        placeholder='Nombre ejercicio'
-                        search
-                        searchInput={{ id: 'form-select-control-gender' }}
+                        style={{ marginBottom: '14px' }}
+                        control={Input}
+                        label='Primer ejercicio'
+                        name='name'
+                        type='text'
+                        placeholder='Nombre del ejercicio...'
+                        // value={dataRutine.name}
+                        // onChange={(e) => setDataRutine({ ...dataRutine, name: e.target.value })}
+                        value={secondSerie[1].exercise}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 1: { ...secondSerie[1], exercise: e.target.value } })}
                         className='firstExercise'
                         width={5}
-                        value={secondSerie[1].exercise}
-                        onChange={(e) => setSecondSerie({ ...secondSerie, 1: { ...secondSerie[1], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
@@ -50,18 +53,18 @@ export default function SerieTwo({ nextStep, prevStep, secondSerie, setSecondSer
                 </Form.Group>
                 {/* SEGUNDO EJERCICIO */}
                 <Form.Group >
+                    <SelectorNested categories={categories} exercises={ejercicios} serie={secondSerie} nSerie={2} setSerie={setSecondSerie} />
                     <Form.Field
-                        name='secondExercise'
-                        control={Select}
-                        options={ejercicios}
-                        label={{ children: 'Segundo Ejercicio', htmlFor: 'form-select-control-gender' }}
-                        placeholder='Nombre ejercicio'
-                        search
-                        searchInput={{ id: 'form-select-control-gender' }}
+                        style={{ marginBottom: '14px' }}
+                        control={Input}
+                        label='Segundo ejercicio'
+                        name='name'
+                        type='text'
+                        placeholder='Nombre del ejercicio...'
+                        value={secondSerie[2].exercise}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 2: { ...secondSerie[2], exercise: e.target.value } })}
                         className='secondExercise'
                         width={5}
-                        value={secondSerie[2].exercise}
-                        onChange={(e) => setSecondSerie({ ...secondSerie, 2: { ...secondSerie[2], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
@@ -93,18 +96,18 @@ export default function SerieTwo({ nextStep, prevStep, secondSerie, setSecondSer
                 </Form.Group>
                 {/* TERCER EJERCICIO */}
                 <Form.Group >
+                    <SelectorNested categories={categories} exercises={ejercicios} serie={secondSerie} nSerie={3} setSerie={setSecondSerie} />
                     <Form.Field
-                        name='thirdExercise'
-                        control={Select}
-                        options={ejercicios}
-                        label={{ children: 'Tercer Ejercicio', htmlFor: 'form-select-control-gender' }}
-                        placeholder='Nombre ejercicio'
-                        search
-                        searchInput={{ id: 'form-select-control-gender' }}
+                        style={{ marginBottom: '14px' }}
+                        control={Input}
+                        label='Tercer ejercicio'
+                        name='name'
+                        type='text'
+                        placeholder='Nombre del ejercicio...'
+                        value={secondSerie[3].exercise}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 3: { ...secondSerie[3], exercise: e.target.value } })}
                         className='thirdExercise'
                         width={5}
-                        value={secondSerie[3].exercise}
-                        onChange={(e) => setSecondSerie({ ...secondSerie, 3: { ...secondSerie[3], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
@@ -136,18 +139,18 @@ export default function SerieTwo({ nextStep, prevStep, secondSerie, setSecondSer
                 </Form.Group>
                 {/* CUARTO EJERCICIO */}
                 <Form.Group >
+                    <SelectorNested categories={categories} exercises={ejercicios} serie={secondSerie} nSerie={4} setSerie={setSecondSerie} />
                     <Form.Field
-                        name='fourthExercise'
-                        control={Select}
-                        options={ejercicios}
-                        label={{ children: 'Cuarto Ejercicio', htmlFor: 'form-select-control-gender' }}
-                        placeholder='Nombre ejercicio'
-                        search
-                        searchInput={{ id: 'form-select-control-gender' }}
+                        style={{ marginBottom: '14px' }}
+                        control={Input}
+                        label='Cuarto ejercicio'
+                        name='name'
+                        type='text'
+                        placeholder='Nombre del ejercicio...'
+                        value={secondSerie[4].exercise}
+                        onChange={(e) => setSecondSerie({ ...secondSerie, 4: { ...secondSerie[4], exercise: e.target.value } })}
                         className='fourthExercise'
                         width={5}
-                        value={secondSerie[4].exercise}
-                        onChange={(e) => setSecondSerie({ ...secondSerie, 4: { ...secondSerie[4], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'

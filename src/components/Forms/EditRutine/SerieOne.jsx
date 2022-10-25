@@ -1,14 +1,28 @@
 import React from 'react';
-import { Form, Select, Button, Icon } from 'semantic-ui-react';
+import { Form, Button, Icon, Input } from 'semantic-ui-react';
+import SelectorNested from '../../SelectorNested/SelectorNested';
 
-export default function SerieOne({ prevStep, nextStep, firstSerie, setFirstSerie, ejercicios, day }) {
+export default function SerieOne({ prevStep, nextStep, firstSerie, setFirstSerie, ejercicios, day, categories }) {
 
     return (
         <>
             <Form style={{ padding: '15px' }}>
                 <h2>{day} - serie 1</h2>
                 <Form.Group >
+                    <SelectorNested categories={categories} exercises={ejercicios} serie={firstSerie} nSerie={1} setSerie={setFirstSerie} />
                     <Form.Field
+                        style={{ marginBottom: '14px' }}
+                        control={Input}
+                        label='Primer ejercicio'
+                        name='name'
+                        type='text'
+                        placeholder='Nombre del ejercicio...'
+                        value={firstSerie[1].exercise}
+                        onChange={(e) => setFirstSerie({ ...firstSerie, 1: { ...firstSerie[1], exercise: e.target.value } })}
+                        className='firstExercise'
+                        width={5}
+                    />
+                    {/* <Form.Field
                         name='firstExercise'
                         control={Select}
                         options={ejercicios}
@@ -20,7 +34,7 @@ export default function SerieOne({ prevStep, nextStep, firstSerie, setFirstSerie
                         width={5}
                         value={firstSerie[1].exercise}
                         onChange={(e) => setFirstSerie({ ...firstSerie, 1: { ...firstSerie[1], exercise: e.target.innerText } })}
-                    />
+                    /> */}
                     <Form.Input
                         label='Repeticiones'
                         name='firstRep'
@@ -51,18 +65,20 @@ export default function SerieOne({ prevStep, nextStep, firstSerie, setFirstSerie
                 </Form.Group>
                 {/* SEGUNDO EJERCICIO */}
                 <Form.Group >
+                    <SelectorNested categories={categories} exercises={ejercicios} serie={firstSerie} nSerie={2} setSerie={setFirstSerie} />
                     <Form.Field
-                        name='secondExercise'
-                        control={Select}
-                        options={ejercicios}
-                        label={{ children: 'Segundo Ejercicio', htmlFor: 'form-select-control-gender' }}
-                        placeholder='Nombre ejercicio'
-                        search
-                        searchInput={{ id: 'form-select-control-gender' }}
+                        style={{ marginBottom: '14px' }}
+                        control={Input}
+                        label='Segundo ejercicio'
+                        name='name'
+                        type='text'
+                        placeholder='Nombre del ejercicio...'
+                        // value={dataRutine.name}
+                        // onChange={(e) => setDataRutine({ ...dataRutine, name: e.target.value })}
+                        value={firstSerie[2].exercise}
+                        onChange={(e) => setFirstSerie({ ...firstSerie, 2: { ...firstSerie[2], exercise: e.target.value } })}
                         className='secondExercise'
                         width={5}
-                        value={firstSerie[2].exercise}
-                        onChange={(e) => setFirstSerie({ ...firstSerie, 2: { ...firstSerie[2], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
@@ -94,18 +110,20 @@ export default function SerieOne({ prevStep, nextStep, firstSerie, setFirstSerie
                 </Form.Group>
                 {/* TERCER EJERCICIO */}
                 <Form.Group >
+                    <SelectorNested categories={categories} exercises={ejercicios} serie={firstSerie} nSerie={3} setSerie={setFirstSerie} />
                     <Form.Field
-                        name='thirdExercise'
-                        control={Select}
-                        options={ejercicios}
-                        label={{ children: 'Tercer Ejercicio', htmlFor: 'form-select-control-gender' }}
-                        placeholder='Nombre ejercicio'
-                        search
-                        searchInput={{ id: 'form-select-control-gender' }}
+                        style={{ marginBottom: '14px' }}
+                        control={Input}
+                        label='Tercer ejercicio'
+                        name='name'
+                        type='text'
+                        placeholder='Nombre del ejercicio...'
+                        // value={dataRutine.name}
+                        // onChange={(e) => setDataRutine({ ...dataRutine, name: e.target.value })}
+                        value={firstSerie[3].exercise}
+                        onChange={(e) => setFirstSerie({ ...firstSerie, 3: { ...firstSerie[3], exercise: e.target.value } })}
                         className='thirdExercise'
                         width={5}
-                        value={firstSerie[3].exercise}
-                        onChange={(e) => setFirstSerie({ ...firstSerie, 3: { ...firstSerie[3], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
@@ -137,18 +155,20 @@ export default function SerieOne({ prevStep, nextStep, firstSerie, setFirstSerie
                 </Form.Group>
                 {/* CUARTO EJERCICIO */}
                 <Form.Group >
+                    <SelectorNested categories={categories} exercises={ejercicios} serie={firstSerie} nSerie={4} setSerie={setFirstSerie} />
                     <Form.Field
-                        name='fourthExercise'
-                        control={Select}
-                        options={ejercicios}
-                        label={{ children: 'Cuarto Ejercicio', htmlFor: 'form-select-control-gender' }}
-                        placeholder='Nombre ejercicio'
-                        search
-                        searchInput={{ id: 'form-select-control-gender' }}
+                        style={{ marginBottom: '14px' }}
+                        control={Input}
+                        label='Cuarto ejercicio'
+                        name='name'
+                        type='text'
+                        placeholder='Nombre del ejercicio...'
+                        // value={dataRutine.name}
+                        // onChange={(e) => setDataRutine({ ...dataRutine, name: e.target.value })}
+                        value={firstSerie[4].exercise}
+                        onChange={(e) => setFirstSerie({ ...firstSerie, 4: { ...firstSerie[4], exercise: e.target.value } })}
                         className='fourthExercise'
                         width={5}
-                        value={firstSerie[4].exercise}
-                        onChange={(e) => setFirstSerie({ ...firstSerie, 4: { ...firstSerie[4], exercise: e.target.innerText } })}
                     />
                     <Form.Input
                         label='Repeticiones'
