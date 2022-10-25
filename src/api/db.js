@@ -6,7 +6,7 @@ export class Database {
     data = path.join(__dirname, 'infoFiles', 'dataClients');
     dataClients = path.join(__dirname, 'infoFiles', 'dataClients', 'clients.json');
     dataExercises = path.join(__dirname, 'infoFiles', 'dataClients', 'exercises.json');
-    dataRutines = path.join(__dirname, 'infoFiles', 'rutinasCreadas')
+    dataRutines = path.join(__dirname, 'infoFiles', 'rutinasCreadas');
 
     async validateDirectories(nameDirectory) {
         try {
@@ -32,6 +32,9 @@ export class Database {
                     await fs.writeFile(path.join(this.data, `exercises.json`), initialData, (err) => {
                         if (err) throw err;
                     });
+                    await fs.writeFile(path.join(this.data, `medicalForms.json`), initialData, (err) => {
+                        if (err) throw err;
+                    });
                     this.validateDirectories('rutinasCreadas');
                 }
             }
@@ -40,6 +43,13 @@ export class Database {
                 if (!arrayFiles.includes('rutinasCreadas')) {
                     await fs.mkdir(path.join(__dirname, 'infoFiles', 'rutinasCreadas'));
                 }
+                this.validateDirectories('medicalForm');
+            }
+            let files = await fs.readdir(this.data);
+            if (!files.includes('medicalForm.json')) {
+                await fs.writeFile(path.join(this.data, `medicalForms.json`), JSON.stringify([]), (err) => {
+                    if (err) throw err;
+                });
             }
         } catch (error) {
             throw error;
