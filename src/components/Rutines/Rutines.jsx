@@ -12,9 +12,16 @@ export function Rutines() {
     const dispatch = useDispatch();
     const rutinas = useSelector((state) => state.rutinesReducer.rutines);
     const copyRutines = useSelector((state) => state.rutinesReducer.copyRutines);
+    // const reLoad = useSelector((state) => state.loadingReducer.isLoading);
+
 
     useEffect(() => {
         dispatch(getAllRutines());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+
+        return () => {
+            dispatch(getAllRutines());
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
