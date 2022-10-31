@@ -86,7 +86,7 @@ export class GeneratorPDF {
                 doc.text(result[0], 18, 93, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 18, 97, { renderingMode: renderMode }, 0);
             } else {
-                doc.text(data.dayOne.dayOneFirst[4].exercise, 18, 97, null, 0);
+                doc.text(data.dayOne.dayOneFirst[4].exercise, 18, 97, { renderingMode: renderMode }, 0);
             }
             doc.text((String(data.dayOne.dayOneFirst[4].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[4].rep), 96, 97, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayOne.dayOneFirst[4].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[4].weight), 126, 97, { renderingMode: renderMode }, 0);

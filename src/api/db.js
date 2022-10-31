@@ -46,7 +46,7 @@ export class Database {
                 this.validateDirectories('medicalForm');
             }
             let files = await fs.readdir(this.data);
-            if (!files.includes('medicalForm.json')) {
+            if (!files.includes('medicalForms.json')) {
                 await fs.writeFile(path.join(this.data, `medicalForms.json`), JSON.stringify([]), (err) => {
                     if (err) throw err;
                 });
