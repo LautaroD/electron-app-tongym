@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getClient } from '../../redux/actions';
+import { getClient, getAllMedicalForms } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { Divider, Header, Message, Icon } from 'semantic-ui-react';
-import { CardPayment, CardInfo } from './components';
+import { Divider, Header } from 'semantic-ui-react';
+import { CardInfo, Message, CardPayment } from './components';
 import './Profile.scss';
 import moment from 'moment';
 
 
 export function Profile() {
     const infoClient = useSelector((state) => state.clientsReducer.client);
+    const planillaMedica = useSelector((state) => state.medicalFormsReducer.allMedicalForms);
     const dispatch = useDispatch();
     const { id } = useParams();
 
     useEffect(() => {
         dispatch(getClient(Number(id)));
+        dispatch(getAllMedicalForms());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -27,18 +29,7 @@ export function Profile() {
 
     return (
         <div>
-            <div className='home'>
-                <span className='home__iconb'>
-                    <Icon name='lock' size='massive' disabled />
-                    <p className='home__iconb__textWarning'>Característica no disponible</p>
-                </span>
-                {/* <div className='home__contentPrimary'>
-                <CardClients clients='123' title='Clientes registrados' />
-                <CardClients clients='1243' title='Rutinas creadas' />
-                <CardClients clients='1243' title='Ejercicios creados' />
-            </div> */}
-            </div>
-            {/* {
+            {
                 (infoClient === null || infoClient === undefined)
                     ? <h1>Cargando perfil...</h1>
                     : (
@@ -50,19 +41,16 @@ export function Profile() {
                             </div>
                             <div className='profile-client__content'>
                                 {
-                                    (infoClient[0].planillaMedica === 'no')
-                                        ? <Message negative>
-                                            <Message.Header>Sin planilla médica</Message.Header>
-                                        </Message>
-                                        : <></>
+                                    (planillaMedica.includes(infoClient[0].key))
+                                        ? <></>
+                                        : <Message clientKey={infoClient[0].key} />
                                 }
+                                {/* <CardPayment /> */}
                                 <CardInfo infoClient={infoClient} />
-                                <CardPayment payment={infoClient[0].lastPayment} />
-
                             </div>
                         </div>
                     )
-            } */}
+            }
         </div>
     )
 }

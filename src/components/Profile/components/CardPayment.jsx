@@ -1,38 +1,32 @@
-import React from 'react';
-import { Card, Message } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Header, Icon } from 'semantic-ui-react';
 import './CardPayment.scss';
-
-const items = [
-    {
-        header: 'Julio',
-        description:
-            'Leverage agile frameworks to provide a robust synopsis for high level overviews.',
-        meta: 'ROI: 30%',
-    },
-    {
-        header: 'Agosto',
-        description:
-            'Bring to the table win-win survival strategies to ensure proactive domination.',
-        meta: 'ROI: 34%',
-    },
-    {
-        header: 'Septiembre',
-        description:
-            'Capitalise on low hanging fruit to identify a ballpark value added activity to beta test.',
-        meta: 'ROI: 27%',
-    },
-]
+import Months from './Months';
 
 export function CardPayment({ payment }) {
+    const [year, setYear] = useState(new Date().getFullYear())
+
+    function nextYear() {
+        setYear(year + 1);
+    }
+
+    function prevYear() {
+        setYear(year - 1);
+    }
+
     return (
         <>
-            {
-                (payment.length !== 0)
-                    ? <Message warning>
-                        <Message.Header>Sin pagos previos</Message.Header>
-                    </Message>
-                    : <Card.Group items={items} />
-            }
+            <div className='cardInfo__header'>
+                <Header as='h3'>Asistencia y pagos</Header>
+            </div>
+            <div className='cardInfo__subHeader'>
+                <span style={{ cursor: 'pointer' }} onClick={() => prevYear()}><Icon name='arrow left' size='big' /></span>
+                <Header as='h2'>{year}</Header>
+                <span style={{ cursor: 'pointer' }} onClick={() => nextYear()}><Icon name='arrow right' size='big' /></span>
+            </div>
+            <div className='cardInfo__content'>
+                <Months />
+            </div>
         </>
     )
 }
