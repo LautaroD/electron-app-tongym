@@ -54,6 +54,8 @@
         display: inline-flex;
         flex-direction: column;
         cursor: pointer;
+        overflow-y: scroll;
+        max-height: 205px;
 
         >div:hover {
             font-weight: bolder;
