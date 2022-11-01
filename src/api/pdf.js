@@ -189,7 +189,7 @@ export class GeneratorPDF {
             doc.addImage(plantillaPDF2, 'JPEG', 0, 0, 300, 200);
 
             // DIA DOS - SERIE 1
-            if (data.dayTwo.dayTwoFirst[1].exercise.length > 25) {
+            if (data.dayTwo.dayTwoFirst[1].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoFirst[1].exercise, ' ');
                 doc.text(result[0], 11, 28.5, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 33, { renderingMode: renderMode }, 0);
@@ -198,20 +198,32 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoFirst[1].rep) === '0') ? '' : String(data.dayTwo.dayTwoFirst[1].rep), 74, 33, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoFirst[1].weight) === '0') ? '' : String(data.dayTwo.dayTwoFirst[1].weight), 89, 33, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoFirst[1].type, 100, 33, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoFirst[1].type.length > 19) {
+                let result = dividirCadena(data.dayTwo.dayTwoFirst[1].type, ' ');
+                doc.text(result[0], 100, 28.5, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 33, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoFirst[1].type, 100, 33, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayTwo.dayTwoFirst[2].exercise.length > 25) {
+            if (data.dayTwo.dayTwoFirst[2].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoFirst[2].exercise, ' ');
                 doc.text(result[0], 11, 39, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 44.5, { renderingMode: renderMode }, 0);
             } else {
                 doc.text(data.dayTwo.dayTwoFirst[2].exercise, 11, 44.5, { renderingMode: renderMode }, 0);
             }
-            doc.text((String(data.dayTwo.dayTwoFirst[2].rep) === '0') ? '' : String(data.dayTwo.dayTwoFirst[2].rep), 11, 45, { renderingMode: renderMode }, 0);
-            doc.text((String(data.dayTwo.dayTwoFirst[2].weight) === '0') ? '' : String(data.dayTwo.dayTwoFirst[2].weight), 74, 45, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoFirst[2].type, 100, 45, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayTwo.dayTwoFirst[2].rep) === '0') ? '' : String(data.dayTwo.dayTwoFirst[2].rep), 74, 45, { renderingMode: renderMode }, 0);
+            doc.text((String(data.dayTwo.dayTwoFirst[2].weight) === '0') ? '' : String(data.dayTwo.dayTwoFirst[2].weight), 89, 45, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoFirst[2].type.length > 19) {
+                let result = dividirCadena(data.dayTwo.dayTwoFirst[2].type, ' ');
+                doc.text(result[0], 100, 39, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 45, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoFirst[2].type, 100, 45, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayTwo.dayTwoFirst[3].exercise.length > 25) {
+            if (data.dayTwo.dayTwoFirst[3].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoFirst[3].exercise, ' ');
                 doc.text(result[0], 11, 51, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 56, { renderingMode: renderMode }, 0);
@@ -220,9 +232,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoFirst[3].rep) === '0') ? '' : String(data.dayTwo.dayTwoFirst[3].rep), 74, 56, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoFirst[3].weight) === '0') ? '' : String(data.dayTwo.dayTwoFirst[3].weight), 89, 56, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoFirst[3].type, 100, 56, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoFirst[3].type.length > 19) {
+                let result = dividirCadena(data.dayTwo.dayTwoFirst[2].type, ' ');
+                doc.text(result[0], 100, 51, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 56, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoFirst[3].type, 100, 56, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayTwo.dayTwoFirst[4].exercise.length > 25) {
+            if (data.dayTwo.dayTwoFirst[4].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoFirst[4].exercise, ' ');
                 doc.text(result[0], 11, 62, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 67, { renderingMode: renderMode }, 0);
@@ -231,11 +249,17 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoFirst[4].rep) === '0') ? '' : String(data.dayTwo.dayTwoFirst[4].rep), 74, 67, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoFirst[4].weight) === '0') ? '' : String(data.dayTwo.dayTwoFirst[4].weight), 89, 67, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoFirst[4].type, 100, 67, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoFirst[4].type.length > 19) {
+                let result = dividirCadena(data.dayTwo.dayTwoFirst[4].type, ' ');
+                doc.text(result[0], 100, 62, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 67, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoFirst[4].type, 100, 67, { renderingMode: renderMode }, 0);
+            }
             // =============================
 
             // DIA DOS - SERIE 2
-            if (data.dayTwo.dayTwoSecond[1].exercise.length > 25) {
+            if (data.dayTwo.dayTwoSecond[1].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoSecond[1].exercise, ' ');
                 doc.text(result[0], 11, 90, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 95, { renderingMode: renderMode }, 0);
@@ -244,9 +268,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoSecond[1].rep) === '0') ? '' : String(data.dayTwo.dayTwoSecond[1].rep), 74, 95, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoSecond[1].weight) === '0') ? '' : String(data.dayTwo.dayTwoSecond[1].weight), 89, 95, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoSecond[1].type, 100, 95, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoSecond[1].type.length > 19) {
+                let result = dividirCadena(data.dayTwo.dayTwoSecond[1].type, ' ');
+                doc.text(result[0], 100, 90, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 95, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoSecond[1].type, 100, 95, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayTwo.dayTwoSecond[2].exercise.length > 25) {
+            if (data.dayTwo.dayTwoSecond[2].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoSecond[2].exercise, ' ');
                 doc.text(result[0], 11, 102, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 107, { renderingMode: renderMode }, 0);
@@ -255,20 +285,32 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoSecond[2].rep) === '0') ? '' : String(data.dayTwo.dayTwoSecond[2].rep), 74, 107, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoSecond[2].weight) === '0') ? '' : String(data.dayTwo.dayTwoSecond[2].weight), 89, 107, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoSecond[2].type, 100, 107, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoSecond[2].type.length > 19) {
+                let result = dividirCadena(data.dayTwo.dayTwoSecond[2].type, ' ');
+                doc.text(result[0], 100, 102, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 107, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoSecond[2].type, 100, 107, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayTwo.dayTwoSecond[3].exercise.length > 25) {
+            if (data.dayTwo.dayTwoSecond[3].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoSecond[3].exercise, ' ');
-                doc.text(result[0], 11, 103, { renderingMode: renderMode }, 0);
+                doc.text(result[0], 11, 113, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 118, { renderingMode: renderMode }, 0);
             } else {
                 doc.text(data.dayTwo.dayTwoSecond[3].exercise, 11, 118, { renderingMode: renderMode }, 0);
             }
             doc.text((String(data.dayTwo.dayTwoSecond[3].rep) === '0') ? '' : String(data.dayTwo.dayTwoSecond[3].rep), 74, 118, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoSecond[3].weight) === '0') ? '' : String(data.dayTwo.dayTwoSecond[3].weight), 89, 118, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoSecond[3].type, 100, 118, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoSecond[3].type.length > 18) {
+                let result = dividirCadena(data.dayTwo.dayTwoSecond[3].type, ' ');
+                doc.text(result[0], 100, 113, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 118, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoSecond[3].type, 100, 118, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayTwo.dayTwoSecond[4].exercise.length > 25) {
+            if (data.dayTwo.dayTwoSecond[4].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoSecond[4].exercise, ' ');
                 doc.text(result[0], 11, 124, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 129, { renderingMode: renderMode }, 0);
@@ -277,11 +319,17 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoSecond[4].rep) === '0') ? '' : String(data.dayTwo.dayTwoSecond[4].rep), 74, 129, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoSecond[4].weight) === '0') ? '' : String(data.dayTwo.dayTwoSecond[4].weight), 89, 129, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoSecond[4].type, 100, 129, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoSecond[4].type.length > 18) {
+                let result = dividirCadena(data.dayTwo.dayTwoSecond[4].type, ' ');
+                doc.text(result[0], 100, 124, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 129, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoSecond[4].type, 100, 129, { renderingMode: renderMode }, 0);
+            }
             // =============================
 
             // DIA DOS - SERIE 3
-            if (data.dayTwo.dayTwoThird[1].exercise.length > 25) {
+            if (data.dayTwo.dayTwoThird[1].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoThird[1].exercise, ' ');
                 doc.text(result[0], 11, 152, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 157, { renderingMode: renderMode }, 0);
@@ -290,9 +338,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoThird[1].rep) === '0') ? '' : String(data.dayTwo.dayTwoThird[1].rep), 74, 157, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoThird[1].weight) === '0') ? '' : String(data.dayTwo.dayTwoThird[1].weight), 89, 157, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoThird[1].type, 100, 157, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoThird[1].type.length > 18) {
+                let result = dividirCadena(data.dayTwo.dayTwoThird[1].type, ' ');
+                doc.text(result[0], 100, 152, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 157, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoThird[1].type, 100, 157, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayTwo.dayTwoThird[2].exercise.length > 25) {
+            if (data.dayTwo.dayTwoThird[2].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoThird[2].exercise, ' ');
                 doc.text(result[0], 11, 164, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 169, { renderingMode: renderMode }, 0);
@@ -301,9 +355,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoThird[2].rep) === '0') ? '' : String(data.dayTwo.dayTwoThird[2].rep), 74, 169, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoThird[2].weight) === '0') ? '' : String(data.dayTwo.dayTwoThird[2].weight), 89, 169, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoThird[2].type, 100, 169, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoThird[2].type.length > 18) {
+                let result = dividirCadena(data.dayTwo.dayTwoThird[2].type, ' ');
+                doc.text(result[0], 100, 164, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 169, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoThird[2].type, 100, 169, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayTwo.dayTwoThird[3].exercise.length > 25) {
+            if (data.dayTwo.dayTwoThird[3].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoThird[3].exercise, ' ');
                 doc.text(result[0], 11, 176, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 181, { renderingMode: renderMode }, 0);
@@ -312,9 +372,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoThird[3].rep) === '0') ? '' : String(data.dayTwo.dayTwoThird[3].rep), 74, 181, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoThird[3].weight) === '0') ? '' : String(data.dayTwo.dayTwoThird[3].weight), 89, 181, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoThird[3].type, 100, 181, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoThird[3].type.length > 18) {
+                let result = dividirCadena(data.dayTwo.dayTwoThird[3].type, ' ');
+                doc.text(result[0], 100, 176, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 181, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoThird[3].type, 100, 181, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayTwo.dayTwoThird[4].exercise.length > 25) {
+            if (data.dayTwo.dayTwoThird[4].exercise.length > 19) {
                 let result = dividirCadena(data.dayTwo.dayTwoThird[4].exercise, ' ');
                 doc.text(result[0], 11, 186, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 11, 191, { renderingMode: renderMode }, 0);
@@ -323,12 +389,18 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayTwo.dayTwoThird[4].rep) === '0') ? '' : String(data.dayTwo.dayTwoThird[4].rep), 74, 191, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayTwo.dayTwoThird[4].weight) === '0') ? '' : String(data.dayTwo.dayTwoThird[4].weight), 89, 191, { renderingMode: renderMode }, 0);
-            doc.text(data.dayTwo.dayTwoThird[4].type, 100, 191, { renderingMode: renderMode }, 0);
+            if (data.dayTwo.dayTwoThird[4].type.length > 18) {
+                let result = dividirCadena(data.dayTwo.dayTwoThird[4].type, ' ');
+                doc.text(result[0], 100, 186, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 100, 191, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayTwo.dayTwoThird[4].type, 100, 191, { renderingMode: renderMode }, 0);
+            }
             // =========================
 
 
             // DIA TRES - SERIE 1
-            if (data.dayThree.dayThreeFirst[1].exercise.length > 25) {
+            if (data.dayThree.dayThreeFirst[1].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeFirst[1].exercise, ' ');
                 doc.text(result[0], 155, 28, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 33, { renderingMode: renderMode }, 0);
@@ -337,9 +409,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeFirst[1].rep) === '0') ? '' : String(data.dayThree.dayThreeFirst[1].rep), 219, 33, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeFirst[1].weight) === '0') ? '' : String(data.dayThree.dayThreeFirst[1].weight), 234, 33, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeFirst[1].type, 245, 33, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeFirst[1].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeFirst[1].type, ' ');
+                doc.text(result[0], 245, 28, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 33, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeFirst[1].type, 245, 33, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayThree.dayThreeFirst[2].exercise.length > 25) {
+            if (data.dayThree.dayThreeFirst[2].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeFirst[2].exercise, ' ');
                 doc.text(result[0], 155, 40, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 45, { renderingMode: renderMode }, 0);
@@ -348,9 +426,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeFirst[2].rep) === '0') ? '' : String(data.dayThree.dayThreeFirst[2].rep), 219, 45, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeFirst[2].weight) === '0') ? '' : String(data.dayThree.dayThreeFirst[2].weight), 234, 45, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeFirst[2].type, 245, 45, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeFirst[2].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeFirst[2].type, ' ');
+                doc.text(result[0], 245, 40, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 45, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeFirst[2].type, 245, 45, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayThree.dayThreeFirst[3].exercise.length > 25) {
+            if (data.dayThree.dayThreeFirst[3].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeFirst[3].exercise, ' ');
                 doc.text(result[0], 155, 51, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 56, { renderingMode: renderMode }, 0);
@@ -359,9 +443,16 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeFirst[3].rep) === '0') ? '' : String(data.dayThree.dayThreeFirst[3].rep), 219, 56, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeFirst[3].weight) === '0') ? '' : String(data.dayThree.dayThreeFirst[3].weight), 234, 56, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeFirst[3].type, 245, 56, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeFirst[3].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeFirst[3].type, ' ');
+                doc.text(result[0], 245, 51, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 56, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeFirst[3].type, 245, 56, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayThree.dayThreeFirst[4].exercise.length > 25) {
+
+            if (data.dayThree.dayThreeFirst[4].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeFirst[4].exercise, ' ');
                 doc.text(result[0], 155, 62, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 67, { renderingMode: renderMode }, 0);
@@ -370,11 +461,17 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeFirst[4].rep) === '0') ? '' : String(data.dayThree.dayThreeFirst[4].rep), 219, 67, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeFirst[4].weight) === '0') ? '' : String(data.dayThree.dayThreeFirst[4].weight), 234, 67, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeFirst[4].type, 245, 67, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeFirst[4].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeFirst[4].type, ' ');
+                doc.text(result[0], 245, 62, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 67, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeFirst[4].type, 245, 67, { renderingMode: renderMode }, 0);
+            }
             // =============================
 
             // DIA TRES - SERIE 2
-            if (data.dayThree.dayThreeSecond[1].exercise.length > 25) {
+            if (data.dayThree.dayThreeSecond[1].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeSecond[1].exercise, ' ');
                 doc.text(result[0], 155, 90, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 95, { renderingMode: renderMode }, 0);
@@ -383,9 +480,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeSecond[1].rep) === '0') ? '' : String(data.dayThree.dayThreeSecond[1].rep), 219, 95, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeSecond[1].weight) === '0') ? '' : String(data.dayThree.dayThreeSecond[1].weight), 234, 95, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeSecond[1].type, 245, 95, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeSecond[1].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeSecond[1].type, ' ');
+                doc.text(result[0], 245, 90, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 95, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeSecond[1].type, 245, 95, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayThree.dayThreeSecond[2].exercise.length > 25) {
+            if (data.dayThree.dayThreeSecond[2].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeSecond[2].exercise, ' ');
                 doc.text(result[0], 155, 102, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 107, { renderingMode: renderMode }, 0);
@@ -394,9 +497,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeSecond[2].rep) === '0') ? '' : String(data.dayThree.dayThreeSecond[2].rep), 219, 107, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeSecond[2].weight) === '0') ? '' : String(data.dayThree.dayThreeSecond[2].weight), 234, 107, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeSecond[2].type, 245, 107, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeSecond[2].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeSecond[2].type, ' ');
+                doc.text(result[0], 245, 102, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 107, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeSecond[2].type, 245, 107, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayThree.dayThreeSecond[3].exercise.length > 25) {
+            if (data.dayThree.dayThreeSecond[3].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeSecond[3].exercise, ' ');
                 doc.text(result[0], 155, 113, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 118, { renderingMode: renderMode }, 0);
@@ -405,9 +514,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeSecond[3].rep) === '0') ? '' : String(data.dayThree.dayThreeSecond[3].rep), 219, 118, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeSecond[3].weight) === '0') ? '' : String(data.dayThree.dayThreeSecond[3].weight), 234, 118, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeSecond[3].type, 245, 118, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeSecond[3].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeSecond[3].type, ' ');
+                doc.text(result[0], 245, 113, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 118, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeSecond[3].type, 245, 118, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayThree.dayThreeSecond[4].exercise.length > 25) {
+            if (data.dayThree.dayThreeSecond[4].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeSecond[4].exercise, ' ');
                 doc.text(result[0], 155, 124, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 129, { renderingMode: renderMode }, 0);
@@ -416,11 +531,17 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeSecond[3].rep) === '0') ? '' : String(data.dayThree.dayThreeSecond[3].rep), 219, 129, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeSecond[4].weight) === '0') ? '' : String(data.dayThree.dayThreeSecond[4].weight), 234, 129, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeSecond[4].type, 245, 129, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeSecond[4].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeSecond[4].type, ' ');
+                doc.text(result[0], 245, 124, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 129, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeSecond[4].type, 245, 129, { renderingMode: renderMode }, 0);
+            }
             // =============================
 
             // DIA TRES - SERIE 3
-            if (data.dayThree.dayThreeThird[1].exercise.length > 25) {
+            if (data.dayThree.dayThreeThird[1].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeThird[1].exercise, ' ');
                 doc.text(result[0], 155, 152, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 157, { renderingMode: renderMode }, 0);
@@ -429,9 +550,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeThird[1].rep) === '0') ? '' : String(data.dayThree.dayThreeThird[1].rep), 219, 157, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeThird[1].weight) === '0') ? '' : String(data.dayThree.dayThreeThird[1].weight), 234, 157, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeThird[1].type, 245, 157, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeThird[1].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeThird[1].type, ' ');
+                doc.text(result[0], 245, 152, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 157, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeThird[1].type, 245, 157, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayThree.dayThreeThird[2].exercise.length > 25) {
+            if (data.dayThree.dayThreeThird[2].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeThird[2].exercise, ' ');
                 doc.text(result[0], 155, 164, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 169, { renderingMode: renderMode }, 0);
@@ -440,9 +567,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeThird[2].rep) === '0') ? '' : String(data.dayThree.dayThreeThird[2].rep), 219, 169, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeThird[2].weight) === '0') ? '' : String(data.dayThree.dayThreeThird[2].weight), 234, 169, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeThird[2].type, 245, 169, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeThird[2].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeThird[2].type, ' ');
+                doc.text(result[0], 245, 164, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 169, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeThird[2].type, 245, 169, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayThree.dayThreeThird[3].exercise.length > 25) {
+            if (data.dayThree.dayThreeThird[3].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeThird[3].exercise, ' ');
                 doc.text(result[0], 155, 176, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 181, { renderingMode: renderMode }, 0);
@@ -451,9 +584,15 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeThird[3].rep) === '0') ? '' : String(data.dayThree.dayThreeThird[3].rep), 219, 181, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeThird[3].weight) === '0') ? '' : String(data.dayThree.dayThreeThird[3].weight), 234, 181, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeThird[3].type, 245, 181, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeThird[3].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeThird[3].type, ' ');
+                doc.text(result[0], 245, 176, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 181, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeThird[3].type, 245, 181, { renderingMode: renderMode }, 0);
+            }
 
-            if (data.dayThree.dayThreeThird[4].exercise.length > 25) {
+            if (data.dayThree.dayThreeThird[4].exercise.length > 19) {
                 let result = dividirCadena(data.dayThree.dayThreeThird[4].exercise, ' ');
                 doc.text(result[0], 155, 186, { renderingMode: renderMode }, 0);
                 doc.text(result[1], 155, 191, { renderingMode: renderMode }, 0);
@@ -462,7 +601,13 @@ export class GeneratorPDF {
             }
             doc.text((String(data.dayThree.dayThreeThird[4].rep) === '0') ? '' : String(data.dayThree.dayThreeThird[4].rep), 219, 191, { renderingMode: renderMode }, 0);
             doc.text((String(data.dayThree.dayThreeThird[4].weight) === '0') ? '' : String(data.dayThree.dayThreeThird[4].weight), 234, 191, { renderingMode: renderMode }, 0);
-            doc.text(data.dayThree.dayThreeThird[4].type, 245, 191, { renderingMode: renderMode }, 0);
+            if (data.dayThree.dayThreeThird[4].type.length > 18) {
+                let result = dividirCadena(data.dayThree.dayThreeThird[4].type, ' ');
+                doc.text(result[0], 245, 186, { renderingMode: renderMode }, 0);
+                doc.text(result[1], 245, 191, { renderingMode: renderMode }, 0);
+            } else {
+                doc.text(data.dayThree.dayThreeThird[4].type, 245, 191, { renderingMode: renderMode }, 0);
+            }
 
             if (type === 'preview') return doc.output('blob');
             else if (type === 'download') return doc.save(fileName + '.pdf');
