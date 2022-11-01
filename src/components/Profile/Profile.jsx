@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getClient, getAllMedicalForms } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { Divider, Header } from 'semantic-ui-react';
-import { CardInfo, Message, CardPayment } from './components';
+import { Divider, Header, Icon } from 'semantic-ui-react';
+import { CardInfo, Message } from './components';
 import './Profile.scss';
 import moment from 'moment';
 
@@ -13,6 +13,7 @@ export function Profile() {
     const planillaMedica = useSelector((state) => state.medicalFormsReducer.allMedicalForms);
     const dispatch = useDispatch();
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getClient(Number(id)));
@@ -33,22 +34,27 @@ export function Profile() {
                 (infoClient === null || infoClient === undefined)
                     ? <h1>Cargando perfil...</h1>
                     : (
-                        <div className='profile-client'>
-                            <div className='profile-client__header'>
-                                <Header as='h1' floated='left' >{infoClient[0].name + ' ' + infoClient[0].lastName}</Header>
-                                <Header as='h5' disabled floated='right'>Antiguedad: {antiguedad()} días</Header>
-                                <Divider clearing />
+                        <>
+                            <div className='profile__navBar'>
+                                <span style={{ cursor: 'pointer' }} onClick={() => navigate(-1)}><Icon name='arrow circle left' size='large' inverted color='violet' /> VOLVER ATRÁS</span>
                             </div>
-                            <div className='profile-client__content'>
-                                {
-                                    (planillaMedica.includes(infoClient[0].key))
-                                        ? <></>
-                                        : <Message clientKey={infoClient[0].key} />
-                                }
-                                {/* <CardPayment /> */}
-                                <CardInfo infoClient={infoClient} />
+                            <div className='profile-client'>
+                                <div className='profile-client__header'>
+                                    <Header as='h1' floated='left' >{infoClient[0].name + ' ' + infoClient[0].lastName}</Header>
+                                    <Header as='h5' disabled floated='right'>Antiguedad: {antiguedad()} días</Header>
+                                    <Divider clearing />
+                                </div>
+                                <div className='profile-client__content'>
+                                    {
+                                        (planillaMedica.includes(infoClient[0].key))
+                                            ? <></>
+                                            : <Message clientKey={infoClient[0].key} />
+                                    }
+                                    {/* <CardPayment /> */}
+                                    <CardInfo infoClient={infoClient} />
+                                </div>
                             </div>
-                        </div>
+                        </>
                     )
             }
         </div>
