@@ -103,7 +103,7 @@ export default function SerieThree({ prevStep, nextStep, thirdSerie, setThirdSer
                         type='text'
                         placeholder='Nombre del ejercicio...'
                         value={thirdSerie[3].exercise}
-                        onChange={(e) => setThirdSerie({ ...thirdSerie, 1: { ...thirdSerie[3], exercise: e.target.value } })}
+                        onChange={(e) => setThirdSerie({ ...thirdSerie, 3: { ...thirdSerie[3], exercise: e.target.value } })}
                         className='thirdExercise'
                         width={5}
                     />

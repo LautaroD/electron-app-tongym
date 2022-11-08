@@ -59,15 +59,11 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                             searchInput={{ id: 'form-select-control-gender' }}
                             className='firstExercise'
                             width={15}
-                            // value={(e) => setDataRutine({...dataRutine, assignedTo: })}
                             value={dataRutine.assignedTo.name}
                             onChange={(e, data) => {
-                                optionClients.forEach(client => {
-                                    if (client.value === data.value) setDataRutine({ ...dataRutine, assignedTo: client })
-                                    else return
-                                })
+                                let result = optionClients.filter(client => client.value === data.value);
+                                (result.length < 1) ? setDataRutine({ ...dataRutine, assignedTo: data.value }) : setDataRutine({ ...dataRutine, assignedTo: result.pop() })
                             }}
-                        // onChange={(e) => setFirstSerie({ ...firstSerie, 1: { ...firstSerie[1], firstExercise: e.target.innerText } })}
                         />
                         <label className='basicInfo-form__labelProgramStart'>Inicio del programa:</label>
                         <DatePicker
