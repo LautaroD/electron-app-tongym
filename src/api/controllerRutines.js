@@ -98,10 +98,9 @@ export class Rutines {
         try {
             let rutines = await fs2.readFileSync(this.dataRutines);
             rutines = JSON.parse(rutines);
-
-            rutines = rutines.filter(rutine => (rutine.dataRutine.name).toLowerCase().includes(data.search.toLowerCase()) || (rutine.dataRutine.assignedTo.text).toLowerCase().includes(data.search.toLowerCase()));
+            rutines = rutines.filter(rutine => (rutine.name).toLowerCase().includes(data.search.toLowerCase()) || (rutine.assignedTo.text).toLowerCase().includes(data.search.toLowerCase()));
             if (Number(data.month) > 0) {
-                return rutines = rutines.filter(rutine => rutine.dataRutine.startProgram !== null && (moment(rutine.dataRutine.startProgram).month() + 1) === Number(data.month))
+                return rutines = rutines.filter(rutine => rutine.startProgram !== null && (moment(rutine.startProgram).month() + 1) === Number(data.month))
             }
 
             return rutines

@@ -59,10 +59,16 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                             searchInput={{ id: 'form-select-control-gender' }}
                             className='firstExercise'
                             width={15}
-                            value={dataRutine.assignedTo.text}
-                            onChange={(e, data) => {
-                                let result = optionClients.filter(client => client.value === data.value);
-                                (!result) ? setDataRutine({ ...dataRutine, assignedTo: { key: 0, value: null, text: null } }) : setDataRutine({ ...dataRutine, assignedTo: result.pop() })
+                            value={dataRutine.assignedTo.name}
+                            onChange={async (e, data) => {
+                                let result = await optionClients.filter(client => client.value === data.value);
+                                if (result.length < 1) {
+                                    setDataRutine({ ...dataRutine, assignedTo: { key: 0, value: null, text: null } })
+                                }
+                                else {
+                                    result = result.pop();
+                                    setDataRutine({ ...dataRutine, assignedTo: result })
+                                }
                             }}
                         />
                         <label className='basicInfo-form__labelProgramStart'>Inicio del programa:</label>

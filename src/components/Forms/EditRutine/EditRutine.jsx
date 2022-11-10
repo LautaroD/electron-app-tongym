@@ -31,7 +31,7 @@ export function EditRutine({ onClose, openAlert }) {
     const dispatch = useDispatch();
     const ejercicios = useSelector((state) => state.exercisesReducer.exercises);
     const clients = useSelector((state) => state.clientsReducer.clients);
-    const editRutine = useSelector((state) => state.rutinesReducer.rutineToEdit)
+    const editRutine = useSelector((state) => state.rutinesReducer.rutineToEdit);
 
     const [step, setStep] = useState(0);
 
@@ -46,9 +46,9 @@ export function EditRutine({ onClose, openAlert }) {
         description: editRutine.description,
         key: editRutine.key,
         assignedTo: {
+            key: editRutine.assignedTo.key,
             value: editRutine.assignedTo.value,
-            text: editRutine.assignedTo.text,
-            key: editRutine.assignedTo.key
+            text: editRutine.assignedTo.text
         },
         startProgram: (editRutine.startProgram === null) ? null : new Date(editRutine.startProgram)
     })

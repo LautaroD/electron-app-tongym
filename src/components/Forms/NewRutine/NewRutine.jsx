@@ -46,9 +46,9 @@ export function NewRutine({ onClose, openAlert }) {
         description: '',
         key: (function () { return new Date().getMilliseconds() * Math.random() })(),
         assignedTo: {
-            name: '',
-            text: '',
-            key: 0
+            key: 0,
+            value: '',
+            text: ''
         },
         startProgram: null
     })
@@ -322,8 +322,8 @@ export function NewRutine({ onClose, openAlert }) {
     let optionClients = [];
     clients.forEach(client => optionClients.push({
         key: client.key,
-        text: client.name.charAt(0).toUpperCase() + client.name.slice(1) + ' ' + client.lastName.charAt(0).toUpperCase() + client.lastName.slice(1),
-        value: client.name + ' ' + client.lastName
+        value: client.name + ' ' + client.lastName,
+        text: client.name.charAt(0).toUpperCase() + client.name.slice(1) + ' ' + client.lastName.charAt(0).toUpperCase() + client.lastName.slice(1)
     }))
 
     switch (step) {

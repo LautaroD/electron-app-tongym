@@ -42,8 +42,8 @@ export default function ListOfClients({ clients, openModal, clientsCopy }) {
                                 {
                                     clients.map((client) => (
                                         <Table.Row key={client.key}>
-                                            <Table.Cell style={{ textTransform: 'capitalize' }}>{client.name}</Table.Cell>
-                                            <Table.Cell style={{ textTransform: 'capitalize' }}>{client.lastName}</Table.Cell>
+                                            <Table.Cell style={{ textTransform: 'capitalize' }}>{(client.name).toUpperCase()}</Table.Cell>
+                                            <Table.Cell style={{ textTransform: 'capitalize' }}>{(client.lastName).toUpperCase()}</Table.Cell>
                                             <Table.Cell>{client.birthDate || 'No especificado'}</Table.Cell>
                                             <Table.Cell>{client.gender || 'No especificado'}</Table.Cell>
                                             <Table.Cell>{client.contacto || 'No especificado'}</Table.Cell>

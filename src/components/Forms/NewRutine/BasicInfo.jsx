@@ -62,7 +62,7 @@ export default function BasicInfo({ nextStep, dataRutine, setDataRutine, optionC
                             value={dataRutine.assignedTo.name}
                             onChange={(e, data) => {
                                 let result = optionClients.filter(client => client.value === data.value);
-                                (result.length < 1) ? setDataRutine({ ...dataRutine, assignedTo: data.value }) : setDataRutine({ ...dataRutine, assignedTo: result.pop() })
+                                (result.length < 1) ? setDataRutine({ ...dataRutine, assignedTo: { key: 0, text: null, value: null } }) : setDataRutine({ ...dataRutine, assignedTo: result.pop() })
                             }}
                         />
                         <label className='basicInfo-form__labelProgramStart'>Inicio del programa:</label>
