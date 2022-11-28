@@ -20,4 +20,9 @@
             padding-right: 10px;
         }
     }
+
+    &__pagination {
+        display: flex;
+        justify-content: center;
+    }
 }

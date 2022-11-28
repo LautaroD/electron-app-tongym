@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import './SearchOfExercise.scss';
 
-export default function SearchOfExercises() {
+export default function SearchOfExercises({ currentPage }) {
     const dispatch = useDispatch();
 
     const formik = useFormik({
@@ -23,6 +23,7 @@ export default function SearchOfExercises() {
     })
 
     const cleanSearch = () => {
+        currentPage(1);
         formik.setFieldValue('search', '');
         formik.setFieldValue('dificultad', '');
         formik.setFieldValue('categoria', '');

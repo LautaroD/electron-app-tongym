@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { resetClients } from '../../redux/actions';
 import * as Yup from 'yup';
 
-export default function SearchOfClients() {
+export default function SearchOfClients({ currentPage }) {
     const dispatch = useDispatch();
 
     const formik = useFormik({
@@ -23,6 +23,7 @@ export default function SearchOfClients() {
     })
 
     const cleanSearch = () => {
+        currentPage(1);
         dispatch(resetClients());
         formik.setFieldValue('search', '')
         formik.setFieldValue('disciplina', '')

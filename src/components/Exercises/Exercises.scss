@@ -1,12 +1,18 @@
 @import '../../scss/index.scss';
 
-// .clients-section {
+.clients-section {
 
-//     &__contador {
-//         padding: 7px 15px;
-//         border-radius: 7px;
-//         background-color: $font-primary;
-//         color: white;
-//         font-weight: bold;
-//     }
-// }
+    &__pagination {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    // &__contador {
+    //     padding: 7px 15px;
+    //     border-radius: 7px;
+    //     background-color: $font-primary;
+    //     color: white;
+    //     font-weight: bold;
+    // }
+}

@@ -4,9 +4,9 @@ import { useFormik } from 'formik';
 import { searchRutine } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import { resetRutines } from '../../redux/actions';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 
-export default function SearchOfRutines() {
+export default function SearchOfRutines({ currentPage }) {
     const dispatch = useDispatch();
 
     const formik = useFormik({
@@ -24,6 +24,7 @@ export default function SearchOfRutines() {
     })
 
     const cleanSearch = () => {
+        currentPage(1);
         dispatch(resetRutines());
         formik.setFieldValue('search', '');
         formik.setFieldValue('month', 0);

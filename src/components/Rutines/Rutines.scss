@@ -24,6 +24,13 @@
         flex-direction: column;
         height: 91vh;
         overflow-y: scroll;
+
+    }
+
+    &__pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
     }
 
     &__titleNoRutines {
