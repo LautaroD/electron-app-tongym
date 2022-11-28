@@ -13,7 +13,7 @@ export class Client {
         let exists = false;
         clients.forEach(async client => {
             let arrayClient = Object.values(client);
-            if ((arrayClient.includes(name)) && (arrayClient.includes(lastName))) return exists = true;
+            if (arrayClient[0].toUpperCase() === name.toUpperCase() && arrayClient[1].toUpperCase() === lastName.toUpperCase()) return exists = true;
         });
         if (exists) return { type: 'error', message: 'Cliente ya registrado' }
         else return { type: 'success' }
