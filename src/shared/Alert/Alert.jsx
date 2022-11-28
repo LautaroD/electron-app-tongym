@@ -6,7 +6,7 @@ export function Alert({ alert, type, message }) {
 
     setTimeout(() => {
         alert({ show: false, type: '', message: '' })
-    }, 3000);
+    }, 5000);
 
     function typeOfAlert() {
         if (type === 'success') return (
