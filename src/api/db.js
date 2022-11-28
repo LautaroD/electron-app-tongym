@@ -11,7 +11,7 @@ export class Database {
     async validateDirectories(nameDirectory) {
         try {
             // Cada vez que se ejecuta comprueba que existan los directorios 
-            // esenciales para el funcionamiento. Si no existen los crea.
+            // vitales para el funcionamiento. Si no existen los crea.
             let arrayFiles = await fs.readdir(__dirname);
 
             if (!arrayFiles.includes('infoFiles')) {
@@ -24,9 +24,6 @@ export class Database {
                     await fs.mkdir(path.join(__dirname, 'infoFiles', 'dataClients'));
                     let initialData = JSON.stringify([]);
                     await fs.writeFile(path.join(this.data, `clients.json`), initialData, (err) => {
-                        if (err) throw err;
-                    });
-                    await fs.writeFile(path.join(this.data, `rutines.json`), initialData, (err) => {
                         if (err) throw err;
                     });
                     await fs.writeFile(path.join(this.data, `exercises.json`), initialData, (err) => {
@@ -50,7 +47,19 @@ export class Database {
                 await fs.writeFile(path.join(this.data, `medicalForms.json`), JSON.stringify([]), (err) => {
                     if (err) throw err;
                 });
+                this.validateDirectories('attendance');
             }
+            else if (!files.includes('rutines.json')) {
+                await fs.writeFile(path.join(this.data, `rutines.json`), JSON.stringify({ info: { totalCreated: 0 }, rutines: [] }), (err) => {
+                    if (err) throw err;
+                });
+            }
+            else if (!files.includes('attendance.json')) {
+                await fs.writeFile(path.join(this.data, 'attendance.json'), JSON.stringify([]), (err) => {
+                    if (err) throw err;
+                })
+            }
+            return
         } catch (error) {
             throw error;
         }
