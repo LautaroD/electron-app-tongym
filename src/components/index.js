@@ -5,3 +5,4 @@ export * from './Rutines/Rutines';
 export * from './Layout/Layout'
 export * from './Exercises/Exercises';
 export * from './Profile/Profile';
+export * from './Attendance/Attendance';

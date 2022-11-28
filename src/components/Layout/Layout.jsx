@@ -1,14 +1,16 @@
 import React from 'react';
 import { Sidebar } from '../index';
 import './Layout.scss';
-import { Database } from '../../api';
+import { Database, Attedance } from '../../api';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 const controllerDatabase = new Database();
+const attendanceController = new Attedance();
 
 (async function validations() {
     await controllerDatabase.validateDirectories();
     await controllerDatabase.newMonth();
+    await attendanceController.checkMonth();
 })();
 
 export function Layout({ children }) {

@@ -1,0 +1,52 @@
+@import '../../scss/index.scss';
+
+.updateList {
+
+    &__body {
+        .field.selectClientAttendance {
+
+            .search {
+                width: 50%;
+            }
+        }
+
+        >button.ui.button {
+            background-color: $font-secondary;
+            color: white;
+
+            &:hover {
+                border-style: none;
+                background-color: $font-primary;
+                color: white;
+            }
+        }
+
+        .ui.celled.table {
+
+            tbody {
+                td {
+
+                    .ui.input {
+                        >input {
+                            border-style: none;
+                        }
+                    }
+
+                    i.cancel.icon {
+                        cursor: pointer;
+                        font-size: 20px;
+                    }
+
+                }
+            }
+        }
+    }
+
+    &__table {
+        max-height: 65vh;
+        overflow-y: scroll;
+    }
+
+
+
+}

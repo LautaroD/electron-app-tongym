@@ -5,6 +5,7 @@ import './Sidebar.scss';
 import { logoPrimary } from '../../assets';
 import { BasicModal, Alert } from '../../shared';
 import { NewRutine, NewClient, NewExercise } from '../Forms';
+// import { Attendance } from '../Attendance';
 const versionApp = require('../../../package.json');
 
 export function Sidebar() {
@@ -43,7 +44,6 @@ export function Sidebar() {
             setTitleModal('Nuevo ejercicio');
             setContentModal(<NewExercise onClose={closeModal} openAlert={openAlert} />)
         }
-
         setShowModal(true);
     }
 
@@ -87,6 +87,13 @@ export function Sidebar() {
                         name='Ejercicios'
                         icon='folder open'
                         active={isCurrentPage('/ejercicios')}
+                    />
+                    <Menu.Item
+                        as={Link}
+                        to='/asistencias'
+                        name='Asistencias'
+                        icon='clipboard list'
+                        active={isCurrentPage('/asistencias')}
                     />
                 </Menu>
 
