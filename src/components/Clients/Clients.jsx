@@ -61,7 +61,7 @@ export function Clients() {
 
     const handlePaginationChange = (e, { activePage }) => {
         setCurrentPage(activePage);
-        ref.current.scrollTop = 0;
+        ref.current.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const totalPages = pageNumbers[pageNumbers.length - 1];
