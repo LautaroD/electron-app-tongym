@@ -25,6 +25,8 @@ function createWindow() {
             : `file://${path.join(__dirname, "../build/index.html")}`
     );
 
+    mainWindow.maximize();
+
     if (isDev) mainWindow.webContents.openDevTools();
     if (!isDev) mainWindow.removeMenu();
 
