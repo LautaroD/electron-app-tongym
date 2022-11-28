@@ -40,7 +40,7 @@ export function Profile() {
                             </div>
                             <div className='profile-client'>
                                 <div className='profile-client__header'>
-                                    <Header as='h1' floated='left' >{infoClient[0].name + ' ' + infoClient[0].lastName}</Header>
+                                    <Header as='h1' floated='left' >{(infoClient[0].name).toLowerCase() + ' ' + (infoClient[0].lastName).toLowerCase()}</Header>
                                     <Header as='h5' disabled floated='right'>Antiguedad: {antiguedad()} días</Header>
                                     <Divider clearing />
                                 </div>

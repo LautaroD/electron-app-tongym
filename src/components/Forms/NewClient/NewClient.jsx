@@ -23,8 +23,7 @@ export function NewClient({ onClose, openAlert }) {
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                // console.log(formValue);
-                let result = await clientController.createClient(formValue.name, formValue.lastName, formValue);
+                let result = await clientController.createClient(formValue.name, formValue.lastName, { ...formValue, name: (formValue.name).toLowerCase(), lastName: (formValue.lastName).toLowerCase() });
                 openAlert(result.type, result.message);
                 dispatch(getAllClients());
                 onClose();
@@ -41,7 +40,7 @@ export function NewClient({ onClose, openAlert }) {
                 <Form.Input
                     name='name'
                     placeholder="Nombre"
-                    value={formik.values.name}
+                    value={(formik.values.name).trim()}
                     onChange={formik.handleChange}
                     error={formik.errors.name}
                     className='inputName'
@@ -49,7 +48,7 @@ export function NewClient({ onClose, openAlert }) {
                 <Form.Input
                     name='lastName'
                     placeholder="Apellido"
-                    value={formik.values.lastName}
+                    value={(formik.values.lastName).trim()}
                     onChange={formik.handleChange}
                     error={formik.errors.lastName}
                     className='inputLastName'
