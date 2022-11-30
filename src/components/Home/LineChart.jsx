@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -11,7 +11,6 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { Loader } from 'semantic-ui-react';
 
 
 ChartJS.register(
@@ -37,8 +36,6 @@ export default function LineChart({ clients, label }) {
             },
         },
     };
-
-
 
     const data = {
         labels,

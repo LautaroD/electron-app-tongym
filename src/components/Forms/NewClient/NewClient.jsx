@@ -1,11 +1,12 @@
 import React from 'react';
-import { Client } from '../../../api';
+import { Client, Estadisticas } from '../../../api';
 import { Form, Input } from 'semantic-ui-react';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './NewClient.data';
 import './NewClient.scss';
 import { useDispatch } from 'react-redux';
 import { getAllClients } from '../../../redux/actions';
+import moment from 'moment';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import es from 'date-fns/locale/es';
@@ -13,6 +14,7 @@ registerLocale('es', es)
 
 // const dbController = new Database();
 const clientController = new Client();
+const statisticsController = new Estadisticas();
 
 export function NewClient({ onClose, openAlert }) {
     const dispatch = useDispatch();
@@ -24,6 +26,7 @@ export function NewClient({ onClose, openAlert }) {
         onSubmit: async (formValue) => {
             try {
                 let result = await clientController.createClient(formValue.name, formValue.lastName, { ...formValue, name: (formValue.name).toLowerCase(), lastName: (formValue.lastName).toLowerCase() });
+                await statisticsController.saveNewClient(formValue.gender)
                 openAlert(result.type, result.message);
                 dispatch(getAllClients());
                 onClose();

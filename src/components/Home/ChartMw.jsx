@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -32,15 +32,7 @@ export const options = {
     },
 };
 
-
-
-
 export default function ChartMw({ clients }) {
-    // const [women, setWomen] = useState([]);
-    // const [men, setMen] = useState([]);
-
-    // setMen(clients.filter(client => client.gender === 'Masculino'));
-    // setWomen(clients.filter(client => client.gender === 'Femenino'));
 
     const labels = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
@@ -49,12 +41,13 @@ export default function ChartMw({ clients }) {
         datasets: [
             {
                 label: 'Mujeres',
-                data: labels.map(() => (Math.random()) + (Math.random())),
+                data: clients.femeninos.map((e) => (e.length > 0) ? e[0].cantidad : 0),
+                // data: labels.map(() => (Math.random()) + (Math.random())),
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
             },
             {
                 label: 'Hombres',
-                data: labels.map(() => (Math.random()) + (Math.random())),
+                data: clients.masculinos.map((e) => (e.length > 0) ? e[0].cantidad : 0),
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
             },
         ],

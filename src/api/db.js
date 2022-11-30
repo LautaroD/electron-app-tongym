@@ -8,7 +8,7 @@ export class Database {
     dataExercises = path.join(__dirname, 'infoFiles', 'dataClients', 'exercises.json');
     dataRutines = path.join(__dirname, 'infoFiles', 'rutinasCreadas');
 
-    async validateDirectories(nameDirectory) {
+    async validateDirectories() {
         try {
             // Cada vez que se ejecuta comprueba que existan los directorios 
             // vitales para el funcionamiento. Si no existen los crea.
@@ -16,46 +16,56 @@ export class Database {
 
             if (!arrayFiles.includes('infoFiles')) {
                 await fs.mkdir(path.join(__dirname, 'infoFiles'));
-                this.validateDirectories('dataClients');
+                this.validateDirectories();
             }
-            else if (nameDirectory === 'dataClients') {
-                let arrayFiles = await fs.readdir(path.join(__dirname, 'infoFiles'));
-                if (!arrayFiles.includes('dataClients')) {
-                    await fs.mkdir(path.join(__dirname, 'infoFiles', 'dataClients'));
-                    let initialData = JSON.stringify([]);
-                    await fs.writeFile(path.join(this.data, `clients.json`), initialData, (err) => {
-                        if (err) throw err;
-                    });
-                    await fs.writeFile(path.join(this.data, `exercises.json`), initialData, (err) => {
-                        if (err) throw err;
-                    });
-                    await fs.writeFile(path.join(this.data, `medicalForms.json`), initialData, (err) => {
-                        if (err) throw err;
-                    });
-                    this.validateDirectories('rutinasCreadas');
-                }
+
+            arrayFiles = await fs.readdir(path.join(__dirname, 'infoFiles'));
+
+            if (!arrayFiles.includes('dataClients')) {
+                await fs.mkdir(path.join(__dirname, 'infoFiles', 'dataClients'));
             }
-            else if (nameDirectory === 'rutinasCreadas') {
-                let arrayFiles = await fs.readdir(path.join(__dirname, 'infoFiles'));
-                if (!arrayFiles.includes('rutinasCreadas')) {
-                    await fs.mkdir(path.join(__dirname, 'infoFiles', 'rutinasCreadas'));
-                }
-                this.validateDirectories('medicalForm');
-            }
+            let initialData = JSON.stringify([]);
             let files = await fs.readdir(this.data);
+
+            if (!files.includes('clients.json')) {
+                await fs.writeFile(path.join(this.data, `clients.json`), initialData, (err) => {
+                    if (err) throw err;
+                });
+            }
+
+            if (!files.includes('exercises.json')) {
+                await fs.writeFile(path.join(this.data, `exercises.json`), initialData, (err) => {
+                    if (err) throw err;
+                });
+            }
+
+            if (!files.includes('medicalForms.json')) {
+                await fs.writeFile(path.join(this.data, `medicalForms.json`), initialData, (err) => {
+                    if (err) throw err;
+                });
+            }
+
+            if (!arrayFiles.includes('rutinasCreadas')) {
+                await fs.mkdir(path.join(__dirname, 'infoFiles', 'rutinasCreadas'));
+            }
+
             if (!files.includes('medicalForms.json')) {
                 await fs.writeFile(path.join(this.data, `medicalForms.json`), JSON.stringify([]), (err) => {
                     if (err) throw err;
                 });
-                this.validateDirectories('attendance');
             }
-            else if (!files.includes('rutines.json')) {
+            if (!files.includes('rutines.json')) {
                 await fs.writeFile(path.join(this.data, `rutines.json`), JSON.stringify({ info: { totalCreated: 0 }, rutines: [] }), (err) => {
                     if (err) throw err;
                 });
             }
-            else if (!files.includes('attendance.json')) {
+            if (!files.includes('attendance.json')) {
                 await fs.writeFile(path.join(this.data, 'attendance.json'), JSON.stringify([]), (err) => {
+                    if (err) throw err;
+                })
+            }
+            if (!files.includes('statistics.json')) {
+                await fs.writeFile(path.join(this.data, 'statistics.json'), JSON.stringify({ "masculinos": [], "femeninos": [] }), (err) => {
                     if (err) throw err;
                 })
             }
@@ -64,6 +74,70 @@ export class Database {
             throw error;
         }
     }
+    // async validateDirectories(nameDirectory) {
+    //     try {
+    //         // Cada vez que se ejecuta comprueba que existan los directorios 
+    //         // vitales para el funcionamiento. Si no existen los crea.
+    //         let arrayFiles = await fs.readdir(__dirname);
+
+    //         if (!arrayFiles.includes('infoFiles')) {
+    //             await fs.mkdir(path.join(__dirname, 'infoFiles'));
+    //             this.validateDirectories('dataClients');
+    //         }
+    //         else if (nameDirectory === 'dataClients') {
+    //             let arrayFiles = await fs.readdir(path.join(__dirname, 'infoFiles'));
+    //             if (!arrayFiles.includes('dataClients')) {
+    //                 await fs.mkdir(path.join(__dirname, 'infoFiles', 'dataClients'));
+    //                 let initialData = JSON.stringify([]);
+    //                 await fs.writeFile(path.join(this.data, `clients.json`), initialData, (err) => {
+    //                     if (err) throw err;
+    //                 });
+    //                 await fs.writeFile(path.join(this.data, `exercises.json`), initialData, (err) => {
+    //                     if (err) throw err;
+    //                 });
+    //                 await fs.writeFile(path.join(this.data, `medicalForms.json`), initialData, (err) => {
+    //                     if (err) throw err;
+    //                 });
+    //                 this.validateDirectories('rutinasCreadas');
+    //             }
+    //         }
+    //         else if (nameDirectory === 'rutinasCreadas') {
+    //             let arrayFiles = await fs.readdir(path.join(__dirname, 'infoFiles'));
+    //             if (!arrayFiles.includes('rutinasCreadas')) {
+    //                 await fs.mkdir(path.join(__dirname, 'infoFiles', 'rutinasCreadas'));
+    //             }
+    //             this.validateDirectories('medicalForm');
+    //         }
+    //         let files = await fs.readdir(this.data);
+    //         if (!files.includes('medicalForms.json')) {
+    //             await fs.writeFile(path.join(this.data, `medicalForms.json`), JSON.stringify([]), (err) => {
+    //                 if (err) throw err;
+    //             });
+    //             this.validateDirectories('attendance');
+    //         }
+    //         else if (!files.includes('rutines.json')) {
+    //             await fs.writeFile(path.join(this.data, `rutines.json`), JSON.stringify({ info: { totalCreated: 0 }, rutines: [] }), (err) => {
+    //                 if (err) throw err;
+    //             });
+    //             this.validateDirectories('attendance');
+    //         }
+    //         else if (!files.includes('attendance.json')) {
+    //             await fs.writeFile(path.join(this.data, 'attendance.json'), JSON.stringify([]), (err) => {
+    //                 if (err) throw err;
+    //             })
+    //             this.validateDirectories('attendance');
+    //         }
+    //         else if (!files.includes('statistics.json')) {
+    //             await fs.writeFile(path.join(this.data, 'statistics.json'), JSON.stringify({ "masculinos": [], "femeninos": [] }), (err) => {
+    //                 if (err) throw err;
+    //             })
+    //             this.validateDirectories('attendance');
+    //         }
+    //         return
+    //     } catch (error) {
+    //         throw error;
+    //     }
+    // }
 
     async newMonth() {
         // Comprueba si existe el folder donde se guardaran las rutinas creadas durante ese mes y año

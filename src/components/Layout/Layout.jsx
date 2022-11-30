@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Sidebar } from '../index';
 import './Layout.scss';
 import { Database, Attedance } from '../../api';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const controllerDatabase = new Database();
 const attendanceController = new Attedance();
 
@@ -14,7 +15,14 @@ const attendanceController = new Attedance();
 })();
 
 export function Layout({ children }) {
-    const loading = useSelector((state) => state.loadingReducer.isLoading)
+    const loading = useSelector((state) => state.loadingReducer.isLoading);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigate('/');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
 
     return (
         <div className='logged-layout'>

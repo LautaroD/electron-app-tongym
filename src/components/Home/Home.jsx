@@ -6,7 +6,8 @@ import ChartMw from './ChartMw';
 import Circle from './Circle';
 import LineChart from './LineChart';
 import { Estadisticas, Rutines } from '../../api';
-import { Header, Grid, Button, Loader } from 'semantic-ui-react';
+import { Header, Grid, Loader } from 'semantic-ui-react';
+import Clock from './Clock';
 
 const estadisticasController = new Estadisticas();
 const rutinesController = new Rutines();
@@ -17,6 +18,7 @@ export function Home() {
     const [rutinas, setRutinas] = useState(0);
     const [genderTotals, setGenderTotals] = useState([]);
     const [attendanceClients, setAttendanceClients] = useState([]);
+    const [newClients, setNewClients] = useState([]);
 
     (async function rutinesCreated() {
         let result = await rutinesController.getInfoRutines();
@@ -38,7 +40,9 @@ export function Home() {
         setTimeout(() => {
             (async function () {
                 let totalClients = await estadisticasController.getTotals();
+                let newClientsData = await estadisticasController.getNewClients();
                 let attendance = await estadisticasController.getAttendante();
+                setNewClients(newClientsData);
                 setGenderTotals(totalClients);
                 setAttendanceClients(attendance);
             })()
@@ -70,9 +74,9 @@ export function Home() {
 
                     <Grid.Column width={7}>
                         {
-                            (attendanceClients.length < 1)
+                            (newClients.length < 1)
                                 ? <div className='secondColumn'><Loader active inline>Cargando...</Loader></div>
-                                : <div className='secondColumn'><ChartMw clients={attendanceClients} /></div>
+                                : <div className='secondColumn'><ChartMw clients={newClients} /></div>
                         }
 
 
@@ -93,8 +97,8 @@ export function Home() {
 
                         {
                             (attendanceClients.length < 1)
-                                ? <div className='secondColumn'><Loader active inline>Cargando...</Loader></div>
-                                : <div className='thirdColumn'><LineChart clients={attendanceClients} /></div>
+                                ? <div className='thirdColumn'><Loader active inline>Cargando...</Loader></div>
+                                : <div className='thirdColumn'><Clock /></div>
                         }
 
                     </Grid.Column>
