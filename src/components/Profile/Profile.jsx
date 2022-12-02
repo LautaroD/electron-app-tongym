@@ -36,7 +36,7 @@ export function Profile() {
                     : (
                         <>
                             <div className='profile__navBar'>
-                                <span style={{ cursor: 'pointer' }} onClick={() => navigate(-1)}><Icon name='arrow circle left' size='large' inverted color='violet' /> VOLVER ATRÁS</span>
+                                <span style={{ cursor: 'pointer' }} onClick={() => navigate('/clients')}><Icon name='arrow circle left' size='large' inverted color='violet' /> VOLVER ATRÁS</span>
                             </div>
                             <div className='profile-client'>
                                 <div className='profile-client__header'>
