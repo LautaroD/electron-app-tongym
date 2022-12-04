@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Select, Table, Icon, Input, Button } from 'semantic-ui-react';
+import { Form, Select, Table, Icon, Input, Button, Label } from 'semantic-ui-react';
 import './UpdateList.scss';
 import { Attedance } from '../../api';
 import { useSelector } from 'react-redux';
@@ -37,7 +37,6 @@ export default function UpdateList({ clients, closeModal, month, year }) {
 
     function saveAttedance() {
         attendanceController.saveAttendance(copyListClient[0], month, year);
-        console.log(copyListClient[0], month, year);
         closeModal();
     }
 
@@ -98,16 +97,38 @@ export default function UpdateList({ clients, closeModal, month, year }) {
                                             (client.payment === null)
                                                 ? <Table.Cell>
                                                     <Input
+                                                        labelPosition='right'
+                                                        type='number'
+                                                        placeholder='Monto...'
+                                                        onChange={(data) => { changePayment(client.key, data.target.value) }}
+                                                    >
+                                                        <Label basic>$</Label>
+                                                        <input />
+                                                    </Input>
+                                                    {/* <Input
+                                                        type='number'
                                                         placeholder='Escriba aquí...'
                                                         onChange={(data) => changePayment(client.key, data.target.value)}
-                                                    />
+                                                    /> */}
                                                 </Table.Cell>
                                                 : <Table.Cell>
                                                     <Input
+                                                        labelPosition='right'
+                                                        type='number'
+                                                        placeholder='Monto...'
+                                                        defaultValue={client.payment}
+                                                        onChange={(data) => { changePayment(client.key, data.target.value) }}
+                                                    >
+                                                        <Label basic>$</Label>
+                                                        <input />
+                                                    </Input>
+                                                    {/* <Input
+                                                        labelPosition='right'
+                                                        type='number'
                                                         placeholder='Escriba aquí...'
                                                         defaultValue={client.payment}
                                                         onChange={(data) => { changePayment(client.key, data.target.value) }}
-                                                    />
+                                                    /> */}
                                                 </Table.Cell>
                                         }
                                         <Table.Cell><Icon name='cancel' onClick={() => deleteClient(client)} /></Table.Cell>

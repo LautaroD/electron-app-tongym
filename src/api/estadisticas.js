@@ -142,4 +142,51 @@ export class Estadisticas {
             throw error;
         }
     }
+
+    async saveRecaudo(month, year, newData) {
+        try {
+            let buffer = await fs2.readFileSync(this.statisticsPath);
+            let data = JSON.parse(buffer);
+
+            if (data.totalRecaudado[year] === undefined) data.totalRecaudado = { ...data.totalRecaudado, [year]: [{ month: month, monto: 0 }] }
+            let arrayRecaudo = data.totalRecaudado[String(year)].filter(e => e.month !== month);
+
+            let total = 0;
+            newData.forEach(element => total += Number(element.payment));
+
+            arrayRecaudo.push({
+                month: month,
+                monto: total
+            })
+
+            data.totalRecaudado = { ...data.totalRecaudado, [year]: arrayRecaudo };
+
+            data = JSON.stringify(data);
+
+            await fs.writeFile(path.join(this.data, `statistics.json`), data, (err) => {
+                if (err) throw err;
+            });
+
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getRecaudo() {
+        try {
+            let buffer = await fs2.readFileSync(this.statisticsPath);
+            let data = JSON.parse(buffer);
+
+            return data.totalRecaudado
+            // const year = new Date().getFullYear();
+            // const month = moment().month(+1);
+
+            // console.log(year);
+            // console.log(month);
+
+
+        } catch (error) {
+            throw error;
+        }
+    }
 }

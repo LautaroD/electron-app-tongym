@@ -1,8 +1,9 @@
-import { GET_LIST_CLIENTS } from '../actions';
+import { GET_LIST_CLIENTS, GET_TOT_RECAUDO } from '../actions';
 
 const initialStore = {
     listClients: [],
-    copyListClients: []
+    copyListClients: [],
+    totRecaudo: []
 }
 
 export const attendanceReducer = (state = initialStore, { type, payload }) => {
@@ -12,6 +13,11 @@ export const attendanceReducer = (state = initialStore, { type, payload }) => {
                 ...state,
                 listClients: payload,
                 copyListClients: payload
+            }
+        case GET_TOT_RECAUDO:
+            return {
+                ...state,
+                totRecaudo: payload
             }
         default:
             return state

@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { Estadisticas } from './estadisticas';
 const fs = window.require('fs').promises;
 const fs2 = window.require('fs');
 const path = window.require('path');
@@ -9,6 +10,10 @@ export class Attedance {
 
     async saveAttendance(data, month, year) {
         try {
+            const controllerEstadisticas = new Estadisticas();
+
+            await controllerEstadisticas.saveRecaudo(month, year, data.client);
+
             let list = await fs2.readFileSync(this.attendancePath);
             list = JSON.parse(list);
 

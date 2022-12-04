@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Buscador from './Buscador';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllClients, getListAttendance, setLoadingTrue, setLoadingFalse } from '../../redux/actions';
+import { getAllClients, getListAttendance, setLoadingTrue, setLoadingFalse, getRecaudo } from '../../redux/actions';
 import { Header, Icon } from 'semantic-ui-react';
 import { BasicModal } from '../../shared';
 import UpdateList from './UpdateList';
@@ -10,6 +10,7 @@ import moment from 'moment';
 import ListClientsAttendance from './ListClientsAttendance';
 
 export function Attendance() {
+    const recaudo = useSelector((state) => state.attendanceReducer.totRecaudo);
 
     const [year, setYear] = useState(new Date().getFullYear());
     const [month, setMonth] = useState((moment().month() + 1));
@@ -24,6 +25,7 @@ export function Attendance() {
     const listAttendance = useSelector((state) => state.attendanceReducer.listClients);
 
     useEffect(() => {
+        dispatch(getRecaudo());
         dispatch(getAllClients());
         dispatch(getListAttendance());
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -65,6 +67,13 @@ export function Attendance() {
         setYear(year - 1);
     }
 
+    function totalRecaudado() {
+        if (recaudo[year] === undefined) return 0
+        let result = recaudo[year].map(e => e.month);
+        if (!result.includes(month)) return 0
+        else return recaudo[year].filter(e => e.month === month)[0].monto;
+    }
+
     return (
         <>
             <div className='attendance'>
@@ -93,6 +102,9 @@ export function Attendance() {
                             }
                         })
                     }
+                </div>
+                <div className='attendance__totalRecaudado'>
+                    Total recaudado: ${totalRecaudado()}
                 </div>
                 <BasicModal
                     show={showModal}

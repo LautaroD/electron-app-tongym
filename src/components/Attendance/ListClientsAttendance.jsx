@@ -27,7 +27,7 @@ export default function ListClientsAttendance({ list }) {
                                 : (<Table.Row positive key={element.key} className='tableAfirmative'>
                                     <Table.Cell width={6}>{element.text}</Table.Cell>
                                     <Table.Cell width={6}>{element.contacto}</Table.Cell>
-                                    <Table.Cell width={6}>{element.payment}</Table.Cell>
+                                    <Table.Cell width={6}>${element.payment}</Table.Cell>
                                 </Table.Row>)
                         })
                     }
