@@ -177,7 +177,9 @@ export class Estadisticas {
             let buffer = await fs2.readFileSync(this.statisticsPath);
             let data = JSON.parse(buffer);
 
-            return data.totalRecaudado
+            if (data.totalRecaudado === undefined) return;
+
+            else return data.totalRecaudado
             // const year = new Date().getFullYear();
             // const month = moment().month(+1);
 

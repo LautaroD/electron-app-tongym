@@ -68,10 +68,12 @@ export function Attendance() {
     }
 
     function totalRecaudado() {
+        if (recaudo === undefined) return 0
         if (recaudo[year] === undefined) return 0
         let result = recaudo[year].map(e => e.month);
         if (!result.includes(month)) return 0
         else return recaudo[year].filter(e => e.month === month)[0].monto;
+
     }
 
     return (
