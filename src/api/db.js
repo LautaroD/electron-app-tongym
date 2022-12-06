@@ -64,8 +64,11 @@ export class Database {
                     if (err) throw err;
                 })
             }
+
+            let year = new Date().getFullYear();
+            let month = moment().month() + 1;
             if (!files.includes('statistics.json')) {
-                await fs.writeFile(path.join(this.data, 'statistics.json'), JSON.stringify({ "masculinos": [], "femeninos": [] }), (err) => {
+                await fs.writeFile(path.join(this.data, 'statistics.json'), JSON.stringify({ masculinos: [], femeninos: [], totalRecaudado: { [year]: [{ month: month, monto: 0 }] } }), (err) => {
                     if (err) throw err;
                 })
             }
