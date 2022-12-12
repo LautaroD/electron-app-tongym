@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
+import { Document, Page, pdfjs } from "react-pdf/dist/umd/entry.webpack";
 import { GeneratorPDF } from '../../api';
 import { Button, Icon } from 'semantic-ui-react';
 import './SinglePadePDF.scss';
@@ -34,7 +34,7 @@ export default function SinglePage({ rutina }) {
             <span style={{ display: 'flex', justifyContent: 'center' }}>
                 <Document
                     file={filePDF}
-                    options={{ workerSrc: "/pdf.worker.js", standardFontDataUrl: `https://unpkg.com/pdfjs-dist@${pdfjs.version}/standard_fonts`, }}
+                    options={{ standardFontDataUrl: `https://unpkg.com/pdfjs-dist@${pdfjs.version}/standard_fonts`, }}
                     onLoadSuccess={onDocumentLoadSuccess}
                     renderMode="svg"
                 >
