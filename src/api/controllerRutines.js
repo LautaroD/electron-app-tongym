@@ -1,6 +1,6 @@
 import { Client } from './controllerClients';
 import moment from 'moment';
-import { GeneratorPDF } from './pdf';
+// import { GeneratorPDF } from './pdf';
 const fs = window.require('fs').promises;
 const fs2 = window.require('fs');
 const path = window.require('path');
@@ -80,7 +80,7 @@ export class Rutines {
     }
 
     async deleteRutine(rutina) {
-        const formatMonth = { 1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril', 5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto', 9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre' };
+        // const formatMonth = { 1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril', 5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto', 9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre' };
         try {
             let data = await fs2.readFileSync(this.dataRutines);
             data = JSON.parse(data);
@@ -92,17 +92,17 @@ export class Rutines {
                 if (err) throw err;
             });
 
-            if (rutina.startProgram !== null) {
-                let folderMonth = `${formatMonth[(moment(rutina.startProgram).month() + 1)]}-${moment(rutina.startProgram).year()}`
-                await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutina.key}.pdf`), function (err) {
-                    if (err) return console.log(err);
-                });
-            } else {
-                let folderMonth = `${formatMonth[(moment().month() + 1)]}-${moment().year()}`
-                await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutina.key}.pdf`), function (err) {
-                    if (err) return console.log(err);
-                });
-            }
+            // if (rutina.startProgram !== null) {
+            //     let folderMonth = `${formatMonth[(moment(rutina.startProgram).month() + 1)]}-${moment(rutina.startProgram).year()}`
+            //     await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutina.key}.pdf`), function (err) {
+            //         if (err) return console.log(err);
+            //     });
+            // } else {
+            //     let folderMonth = `${formatMonth[(moment().month() + 1)]}-${moment().year()}`
+            //     await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutina.key}.pdf`), function (err) {
+            //         if (err) return console.log(err);
+            //     });
+            // }
         } catch (error) {
             throw error;
         }
@@ -124,10 +124,10 @@ export class Rutines {
     }
 
     async editRutine(rutineEdited, type) {
-        const formatMonth = { 1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril', 5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto', 9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre' };
+        // const formatMonth = { 1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril', 5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto', 9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre' };
 
         try {
-            const controllerPDF = new GeneratorPDF();
+            // const controllerPDF = new GeneratorPDF();
             let data = await fs2.readFileSync(this.dataRutines);
             data = JSON.parse(data);
 
@@ -141,18 +141,19 @@ export class Rutines {
 
 
             //Editamos archivo PDF ya guardado en base de datos
-            if (rutineEdited.startProgram !== null) {
-                let folderMonth = `${formatMonth[(moment(rutineEdited.startProgram).month() + 1)]}-${moment(rutineEdited.startProgram).year()}`
-                await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutineEdited.key}.pdf`), function (err) {
-                    if (err) return console.log(err);
-                });
-            } else {
-                let folderMonth = `${formatMonth[(moment().month() + 1)]}-${moment().year()}`
-                await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutineEdited.key}.pdf`), function (err) {
-                    if (err) return console.log(err);
-                });
-            }
-            await controllerPDF.loadPDF(rutineEdited, 'savedb');
+            // if (rutineEdited.startProgram !== null) {
+            //     let folderMonth = `${formatMonth[(moment(rutineEdited.startProgram).month() + 1)]}-${moment(rutineEdited.startProgram).year()}`
+            //     await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutineEdited.key}.pdf`), function (err) {
+            //         if (err) return console.log(err);
+            //     });
+            // } else {
+            //     let folderMonth = `${formatMonth[(moment().month() + 1)]}-${moment().year()}`
+            //     await fs.unlink(path.join(this.pathRutines, folderMonth, `${rutineEdited.key}.pdf`), function (err) {
+            //         if (err) return console.log(err);
+            //     });
+            // }
+
+            // await controllerPDF.loadPDF(rutineEdited, 'savedb');
 
 
             if (rutineEdited.assignedTo.key !== 0) {

@@ -2,7 +2,7 @@ import { plantillaPDF, plantillaPDF2 } from '../assets';
 import moment from 'moment';
 import { Database } from './db';
 const { jsPDF } = require("jspdf"); // will automatically load the node version
-const fs = window.require('fs');
+// const fs = window.require('fs');
 const path = window.require('path');
 
 export class GeneratorPDF {
@@ -24,7 +24,7 @@ export class GeneratorPDF {
             let renderMode = ''
             if (type === 'preview') renderMode = 'invisible';
             else if (type === 'download') renderMode = null;
-            else if (type === 'savedb') renderMode = null;
+            // else if (type === 'savedb') renderMode = null;
 
             const doc = new jsPDF({ orientation: "landscape", });
             doc.addImage(plantillaPDF, 'JPEG', 0, 0, 300, 200);
@@ -614,195 +614,17 @@ export class GeneratorPDF {
 
             if (type === 'preview') return doc.output('blob');
             else if (type === 'download') return doc.save(fileName + '.pdf');
-            else if (type === 'savedb') {
-                fileName = data.key;
-                await fs.writeFile(path.join(this.pathRutines, folderMonth, `${fileName}.pdf`), new Buffer(doc.output('arraybuffer')), (err) => {
-                    if (err) throw err;
-                });
-            }
+            // else if (type === 'savedb') {
+            //     fileName = data.key;
+            //     await fs.writeFile(path.join(this.pathRutines, folderMonth, `${fileName}.pdf`), new Buffer(doc.output('arraybuffer')), (err) => {
+            //         if (err) throw err;
+            //     });
+            // }
 
 
         } catch (error) {
             throw error;
         }
     }
-
-    // async editRutine(data) {
-    //     function dividirCadena(string, separador) {
-    //         let array = string.split(separador);
-    //         let segundoArray = (array.slice((array.length / 2) + 1)).join(' ');
-    //         array = (array.slice(0, (array.length / 2) + 1)).join(' ')
-    //         return [array, segundoArray]
-    //     }
-
-    //     try {
-    //         let databaseController = new Database();
-    //         let folderMonth;
-    //         const formatMonth = { 1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril', 5: 'mayo', 6: 'junio', 7: 'julio', 8: 'agosto', 9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre' };
-    //         const doc = new jsPDF({ orientation: "landscape", });
-    //         doc.addImage(plantillaPDF, 'JPEG', 0, 0, 300, 200);
-
-    //         let fileName = data.dataRutine.key;
-    //         if (data.dataRutine.assignedTo.key === 0) {
-    //             doc.setFontSize(17);
-    //             doc.text(' ', 190, 18, null, 0)
-    //         }
-    //         else {
-    //             doc.setFontSize(17);
-    //             doc.text(String(data.dataRutine.assignedTo.text), 190, 19, null, 0)
-    //         }
-
-    //         if (data.dataRutine.startProgram !== null) {
-    //             doc.setFontSize(13);
-    //             doc.text(moment(data.dataRutine.startProgram).format('D/M/YY'), 209, 26, null, 0);
-    //             folderMonth = `${formatMonth[(moment(data.dataRutine.startProgram).month() + 1)]}-${moment(data.dataRutine.startProgram).year()}`
-    //             await databaseController.valFolder(folderMonth);
-    //         } else {
-    //             folderMonth = `${formatMonth[(moment().month() + 1)]}-${moment().year()}`
-    //             await databaseController.valFolder(folderMonth);
-    //         }
-
-    //         doc.setFontSize(12);
-    //         if (data.dayOne.dayOneFirst[1].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneFirst[1].exercise, ' ');
-    //             doc.text(result[0], 18, 71, null, 0);
-    //             doc.text(result[1], 18, 75, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneFirst[1].exercise, 18, 75, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneFirst[1].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[1].rep), 96, 75, null, 0);
-    //         doc.text((String(data.dayOne.dayOneFirst[1].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[1].weight), 126, 75, null, 0);
-    //         doc.text(data.dayOne.dayOneFirst[1].type, 146, 75, null, 0);
-
-    //         if (data.dayOne.dayOneFirst[2].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneFirst[2].exercise, ' ');
-    //             doc.text(result[0], 18, 78, null, 0);
-    //             doc.text(result[1], 18, 82, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneFirst[2].exercise, 18, 82, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneFirst[2].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[2].rep), 96, 82, null, 0);
-    //         doc.text((String(data.dayOne.dayOneFirst[2].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[2].weight), 126, 82, null, 0);
-    //         doc.text(data.dayOne.dayOneFirst[2].type, 146, 82, null, 0);
-
-    //         if (data.dayOne.dayOneFirst[3].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneFirst[3].exercise, ' ');
-    //             doc.text(result[0], 18, 86, null, 0);
-    //             doc.text(result[1], 18, 90, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneFirst[3].exercise, 18, 90, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneFirst[3].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[3].rep), 96, 90, null, 0);
-    //         doc.text((String(data.dayOne.dayOneFirst[3].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[3].weight), 126, 90, null, 0);
-    //         doc.text(data.dayOne.dayOneFirst[3].type, 146, 90, null, 0);
-
-    //         if (data.dayOne.dayOneFirst[4].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneFirst[4].exercise, ' ');
-    //             doc.text(result[0], 18, 93, null, 0);
-    //             doc.text(result[1], 18, 97, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneFirst[4].exercise, 18, 97, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneFirst[4].rep) === '0') ? '' : String(data.dayOne.dayOneFirst[4].rep), 96, 97, null, 0);
-    //         doc.text((String(data.dayOne.dayOneFirst[4].weight) === '0') ? '' : String(data.dayOne.dayOneFirst[4].weight), 126, 97, null, 0);
-    //         doc.text(data.dayOne.dayOneFirst[4].type, 146, 97, null, 0);
-
-    //         if (data.dayOne.dayOneSecond[1].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneSecond[1].exercise, ' ');
-    //             doc.text(result[0], 18, 119, null, 0);
-    //             doc.text(result[1], 18, 123, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneSecond[1].exercise, 18, 123, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneSecond[1].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[1].rep), 96, 123, null, 0);
-    //         doc.text((String(data.dayOne.dayOneSecond[1].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[1].weight), 126, 123, null, 0);
-    //         doc.text(data.dayOne.dayOneSecond[1].type, 146, 123, null, 0);
-
-    //         if (data.dayOne.dayOneSecond[2].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneSecond[2].exercise, ' ');
-    //             doc.text(result[0], 18, 126, null, 0);
-    //             doc.text(result[1], 18, 130, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneSecond[2].exercise, 18, 130, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneSecond[2].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[2].rep), 96, 130, null, 0);
-    //         doc.text((String(data.dayOne.dayOneSecond[2].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[2].weight), 126, 130, null, 0);
-    //         doc.text(data.dayOne.dayOneSecond[2].type, 146, 130, null, 0);
-
-    //         if (data.dayOne.dayOneSecond[3].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneSecond[3].exercise, ' ');
-    //             doc.text(result[0], 18, 133.5, null, 0);
-    //             doc.text(result[1], 18, 137, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneSecond[3].exercise, 18, 137, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneSecond[3].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[3].rep), 96, 137, null, 0);
-    //         doc.text((String(data.dayOne.dayOneSecond[3].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[3].weight), 126, 137, null, 0);
-    //         doc.text(data.dayOne.dayOneSecond[3].type, 146, 137, null, 0);
-
-    //         if (data.dayOne.dayOneSecond[4].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneSecond[4].exercise, ' ');
-    //             doc.text(result[0], 18, 140, null, 0);
-    //             doc.text(result[1], 18, 144, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneSecond[4].exercise, 18, 144, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneSecond[4].rep) === '0') ? '' : String(data.dayOne.dayOneSecond[4].rep), 96, 144, null, 0);
-    //         doc.text((String(data.dayOne.dayOneSecond[4].weight) === '0') ? '' : String(data.dayOne.dayOneSecond[4].weight), 126, 144, null, 0);
-    //         doc.text(data.dayOne.dayOneSecond[4].type, 146, 144, null, 0);
-
-    //         if (data.dayOne.dayOneThird[1].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneThird[1].exercise, ' ');
-    //             doc.text(result[0], 18, 166, null, 0);
-    //             doc.text(result[1], 18, 170, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneThird[1].exercise, 18, 170, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneThird[1].rep) === '0') ? '' : String(data.dayOne.dayOneThird[1].rep), 96, 170, null, 0);
-    //         doc.text((String(data.dayOne.dayOneThird[1].weight) === '0') ? '' : String(data.dayOne.dayOneThird[1].weight), 126, 170, null, 0);
-    //         doc.text(data.dayOne.dayOneThird[1].type, 146, 170, null, 0);
-
-    //         if (data.dayOne.dayOneThird[2].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneThird[2].exercise, ' ');
-    //             doc.text(result[0], 18, 173, null, 0);
-    //             doc.text(result[1], 18, 177, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneThird[2].exercise, 18, 177, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneThird[2].rep) === '0') ? '' : String(data.dayOne.dayOneThird[2].rep), 96, 177, null, 0);
-    //         doc.text((String(data.dayOne.dayOneThird[2].weight) === '0') ? '' : String(data.dayOne.dayOneThird[2].weight), 126, 177, null, 0);
-    //         doc.text(data.dayOne.dayOneThird[2].type, 146, 177, null, 0);
-
-    //         if (data.dayOne.dayOneThird[3].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneThird[3].exercise, ' ');
-    //             doc.text(result[0], 18, 181, null, 0);
-    //             doc.text(result[1], 18, 185, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneThird[3].exercise, 18, 185, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneThird[3].rep) === '0') ? '' : String(data.dayOne.dayOneThird[3].rep), 96, 185, null, 0);
-    //         doc.text((String(data.dayOne.dayOneThird[3].weight) === '0') ? '' : String(data.dayOne.dayOneThird[3].weight), 126, 185, null, 0);
-    //         doc.text(data.dayOne.dayOneThird[3].type, 146, 185, null, 0);
-
-    //         if (data.dayOne.dayOneThird[4].exercise.length > 31) {
-    //             let result = dividirCadena(data.dayOne.dayOneThird[4].exercise, ' ');
-    //             doc.text(result[0], 18, 188, null, 0);
-    //             doc.text(result[1], 18, 192, null, 0);
-    //         } else {
-    //             doc.text(data.dayOne.dayOneThird[4].exercise, 18, 192, null, 0);
-    //         }
-    //         doc.text((String(data.dayOne.dayOneThird[4].rep) === '0') ? '' : String(data.dayOne.dayOneThird[4].rep), 96, 192, null, 0);
-    //         doc.text((String(data.dayOne.dayOneThird[4].weight) === '0') ? '' : String(data.dayOne.dayOneThird[4].weight), 126, 192, null, 0);
-    //         doc.text(data.dayOne.dayOneThird[4].type, 146, 192, null, 0);
-
-
-    //         await fs.writeFile(path.join(this.pathRutines, folderMonth, `${fileName}.pdf`), new Buffer(doc.output('arraybuffer')), (err) => {
-    //             if (err) throw err;
-    //         });
-    //     } catch (error) {
-    //         throw error
-    //     }
-    // }
-
 }
 

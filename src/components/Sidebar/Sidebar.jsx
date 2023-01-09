@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, Image } from 'semantic-ui-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Sidebar.scss';
 import { logoPrimary } from '../../assets';
 import { BasicModal, Alert } from '../../shared';
@@ -46,6 +46,8 @@ export function Sidebar() {
         }
         setShowModal(true);
     }
+
+    const navigate = useNavigate();
 
     const { pathname } = useLocation();
 
@@ -114,7 +116,7 @@ export function Sidebar() {
                         name='Nueva Rutina'
                         icon='plus'
                         link
-                        onClick={() => openModal('newRutine')}
+                        onClick={() => { navigate('/rutines'); openModal('newRutine') }}
                     />
                 </Menu>
                 <span className='left-menu__appVersion'>

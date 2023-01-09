@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Rutines, GeneratorPDF } from '../../../api';
+import { Rutines } from '../../../api';
 import './NewRutine.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import SerieOne from './SerieOne';
@@ -9,7 +9,7 @@ import BasicInfo from './BasicInfo';
 import { getAllExercises, getAllRutines, getAllClients } from '../../../redux/actions';
 
 const rutinesController = new Rutines();
-const pdfController = new GeneratorPDF();
+// const pdfController = new GeneratorPDF();
 
 const categories = [
     { key: '09', value: 'Abdominales', text: 'Abdominales' },
@@ -310,7 +310,7 @@ export function NewRutine({ onClose, openAlert }) {
         dataRutine.dayOne = { dayOneFirst, dayOneSecond, dayOneThird };
         dataRutine.dayTwo = { dayTwoFirst, dayTwoSecond, dayTwoThird };
         dataRutine.dayThree = { dayThreeFirst, dayThreeSecond, dayThreeThird };
-        await pdfController.loadPDF(dataRutine, 'savedb');
+        // await pdfController.loadPDF(dataRutine, 'savedb');
         let result = await rutinesController.createRutine(dataRutine);
         openAlert(result.type, result.message);
         setTimeout(() => {
