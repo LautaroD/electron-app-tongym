@@ -9,7 +9,7 @@ const isDev = require("electron-is-dev");
 let mainWindow;
 
 function createWindow() {
-    mainWindow = new BrowserWindow({
+    let mainWindow = new BrowserWindow({
         width: 1500,
         height: 1000,
         title: "Todo o Nada - Gym",
@@ -33,9 +33,14 @@ function createWindow() {
     autoUpdater.checkForUpdatesAndNotify();
 
     mainWindow.on("closed", () => (mainWindow = null));
+
+    return mainWindow;
 }
 
-app.on("ready", createWindow);
+// app.on("ready", createWindow);
+app.on("ready", () => {
+    mainWindow = createWindow();
+});
 
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
